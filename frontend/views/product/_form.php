@@ -32,7 +32,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'updatedAt')->textInput() ?>
 
-    <?= $form->field($model, 'deleteAt')->textInput() ?>
+    <?= $form->field($model, 'deletedAt')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

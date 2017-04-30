@@ -14,11 +14,11 @@ use Yii;
  * @property string $remark
  * @property string $createdAt
  * @property string $updatedAt
- * @property string $deleteAt
+ * @property string $deletedAt
  *
  * @property Warehouse[] $warehouses
  */
-class Location extends \yii\db\ActiveRecord
+class Location extends \common\models\base\Location
 {
     /**
      * @inheritdoc
@@ -36,7 +36,7 @@ class Location extends \yii\db\ActiveRecord
         return [
             [['status', 'name', 'address'], 'required'],
             [['status'], 'integer'],
-            [['createdAt', 'updatedAt', 'deleteAt'], 'safe'],
+            [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],
             [['name', 'address', 'remark'], 'string', 'max' => 255],
         ];
     }
@@ -54,7 +54,7 @@ class Location extends \yii\db\ActiveRecord
             'remark' => Yii::t('app', 'Remark'),
             'createdAt' => Yii::t('app', 'Created At'),
             'updatedAt' => Yii::t('app', 'Updated At'),
-            'deleteAt' => Yii::t('app', 'Delete At'),
+            'deletedAt' => Yii::t('app', 'Delete At'),
         ];
     }
 

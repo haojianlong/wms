@@ -25,7 +25,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'updatedAt') ?>
 
-    <?php // echo $form->field($model, 'deleteAt') ?>
+    <?php // echo $form->field($model, 'deletedAt') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>

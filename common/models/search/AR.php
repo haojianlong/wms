@@ -19,7 +19,7 @@ class AR extends ARModel
     {
         return [
             [['id', 'idUser', 'idCompany', 'idProduct', 'idWarehouse', 'type'], 'integer'],
-            [['date', 'note', 'createdAt', 'updatedAt', 'deleteAt'], 'safe'],
+            [['date', 'note', 'createdAt', 'updatedAt', 'deletedAt'], 'safe'],
             [['quantity', 'price'], 'number'],
         ];
     }
@@ -71,7 +71,7 @@ class AR extends ARModel
             'price' => $this->price,
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,
-            'deleteAt' => $this->deleteAt,
+            'deletedAt' => $this->deletedAt,
         ]);
 
         $query->andFilterWhere(['like', 'note', $this->note]);

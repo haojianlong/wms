@@ -19,7 +19,7 @@ class Role extends RoleModel
     {
         return [
             [['id'], 'integer'],
-            [['name', 'role', 'createdAt', 'updatedAt', 'deleteAt'], 'safe'],
+            [['name', 'role', 'createdAt', 'updatedAt', 'deletedAt'], 'safe'],
         ];
     }
 
@@ -62,7 +62,7 @@ class Role extends RoleModel
             'id' => $this->id,
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,
-            'deleteAt' => $this->deleteAt,
+            'deletedAt' => $this->deletedAt,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

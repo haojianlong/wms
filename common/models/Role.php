@@ -12,11 +12,11 @@ use Yii;
  * @property string $role
  * @property string $createdAt
  * @property string $updatedAt
- * @property string $deleteAt
+ * @property string $deletedAt
  *
  * @property User[] $users
  */
-class Role extends \yii\db\ActiveRecord
+class Role extends \common\models\base\Role
 {
     /**
      * @inheritdoc
@@ -32,7 +32,7 @@ class Role extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['createdAt', 'updatedAt', 'deleteAt'], 'safe'],
+            [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],
             [['name', 'role'], 'string', 'max' => 255],
         ];
     }
@@ -48,7 +48,7 @@ class Role extends \yii\db\ActiveRecord
             'role' => Yii::t('app', 'Role'),
             'createdAt' => Yii::t('app', 'Created At'),
             'updatedAt' => Yii::t('app', 'Updated At'),
-            'deleteAt' => Yii::t('app', 'Delete At'),
+            'deletedAt' => Yii::t('app', 'Delete At'),
         ];
     }
 

@@ -19,7 +19,7 @@ class Warehouse extends WarehouseModel
     {
         return [
             [['id', 'idType', 'idLocation', 'status'], 'integer'],
-            [['name', 'code', 'address', 'remark', 'createdAt', 'updatedAt', 'deleteAt'], 'safe'],
+            [['name', 'code', 'address', 'remark', 'createdAt', 'updatedAt', 'deletedAt'], 'safe'],
         ];
     }
 
@@ -65,7 +65,7 @@ class Warehouse extends WarehouseModel
             'status' => $this->status,
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,
-            'deleteAt' => $this->deleteAt,
+            'deletedAt' => $this->deletedAt,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

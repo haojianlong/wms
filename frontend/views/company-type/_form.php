@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\WarehouseType */
+/* @var $model common\models\CompanyType */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="warehouse-type-form">
+<div class="company-type-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
@@ -18,7 +18,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'updatedAt')->textInput() ?>
 
-    <?= $form->field($model, 'deleteAt')->textInput() ?>
+    <?= $form->field($model, 'deletedAt')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

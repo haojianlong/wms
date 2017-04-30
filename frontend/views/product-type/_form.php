@@ -4,13 +4,15 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\CompanyType */
+/* @var $model common\models\ProductType */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="company-type-form">
+<div class="product-type-form">
 
     <?php $form = ActiveForm::begin(); ?>
+
+    <?= $form->field($model, 'idParent')->textInput() ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
@@ -18,7 +20,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'updatedAt')->textInput() ?>
 
-    <?= $form->field($model, 'deleteAt')->textInput() ?>
+    <?= $form->field($model, 'deletedAt')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

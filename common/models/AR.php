@@ -19,9 +19,9 @@ use Yii;
  * @property string $note
  * @property string $createdAt
  * @property string $updatedAt
- * @property string $deleteAt
+ * @property string $deletedAt
  */
-class AR extends \yii\db\ActiveRecord
+class AR extends \common\models\base\AR
 {
     /**
      * @inheritdoc
@@ -39,7 +39,7 @@ class AR extends \yii\db\ActiveRecord
         return [
             [['idUser', 'idCompany', 'idProduct', 'idWarehouse', 'type'], 'required'],
             [['idUser', 'idCompany', 'idProduct', 'idWarehouse', 'type'], 'integer'],
-            [['date', 'createdAt', 'updatedAt', 'deleteAt'], 'safe'],
+            [['date', 'createdAt', 'updatedAt', 'deletedAt'], 'safe'],
             [['quantity', 'price'], 'number'],
             [['note'], 'string', 'max' => 255],
         ];
@@ -63,7 +63,7 @@ class AR extends \yii\db\ActiveRecord
             'note' => Yii::t('app', 'Note'),
             'createdAt' => Yii::t('app', 'Created At'),
             'updatedAt' => Yii::t('app', 'Updated At'),
-            'deleteAt' => Yii::t('app', 'Delete At'),
+            'deletedAt' => Yii::t('app', 'Delete At'),
         ];
     }
 }

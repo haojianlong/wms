@@ -18,11 +18,11 @@ use Yii;
  * @property string $remark
  * @property string $createdAt
  * @property string $updatedAt
- * @property string $deleteAt
+ * @property string $deletedAt
  *
  * @property ProductType $type0
  */
-class Product extends \yii\db\ActiveRecord
+class Product extends \common\models\base\Product
 {
     /**
      * @inheritdoc
@@ -40,7 +40,7 @@ class Product extends \yii\db\ActiveRecord
         return [
             [['idType', 'idWarehouse', 'max', 'name', 'sku', 'barcode'], 'required'],
             [['idType', 'idWarehouse', 'max', 'min'], 'integer'],
-            [['createdAt', 'updatedAt', 'deleteAt'], 'safe'],
+            [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],
             [['name', 'sku', 'barcode', 'remark'], 'string', 'max' => 255],
             [['idType'], 'exist', 'skipOnError' => true, 'targetClass' => ProductType::className(), 'targetAttribute' => ['idType' => 'id']],
         ];
@@ -63,7 +63,7 @@ class Product extends \yii\db\ActiveRecord
             'remark' => Yii::t('app', 'Remark'),
             'createdAt' => Yii::t('app', 'Created At'),
             'updatedAt' => Yii::t('app', 'Updated At'),
-            'deleteAt' => Yii::t('app', 'Delete At'),
+            'deletedAt' => Yii::t('app', 'Delete At'),
         ];
     }
 

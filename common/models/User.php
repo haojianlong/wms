@@ -5,7 +5,6 @@ namespace common\models;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
-use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 
 /**
@@ -21,11 +20,11 @@ use yii\web\IdentityInterface;
  * @property int $status
  * @property string $createdAt
  * @property string $updatedAt
- * @property string $deleteAt
+ * @property string $deletedAt
  *
  * @property Role $role
  */
-class User extends ActiveRecord implements IdentityInterface
+class User extends \common\models\base\User implements IdentityInterface
 {
 
 	const STATUS_DELETED = 0;
@@ -66,7 +65,7 @@ class User extends ActiveRecord implements IdentityInterface
 		return [
 			[['status'], 'integer'],
 			[['username', 'auth_key', 'password_hash', 'email'], 'required'],
-			[['createdAt', 'updatedAt', 'deleteAt'], 'safe'],
+			[['createdAt', 'updatedAt', 'deletedAt'], 'safe'],
 			[['username', 'password_hash', 'password_reset_token', 'email'], 'string', 'max' => 255],
 			[['auth_key'], 'string', 'max' => 32],
 			[['username'], 'unique'],
@@ -92,7 +91,7 @@ class User extends ActiveRecord implements IdentityInterface
 			'status' => Yii::t('app', 'Status'),
 			'createdAt' => Yii::t('app', 'Created At'),
 			'updatedAt' => Yii::t('app', 'Updated At'),
-			'deleteAt' => Yii::t('app', 'Delete At'),
+			'deletedAt' => Yii::t('app', 'Delete At'),
 		];
 	}
 

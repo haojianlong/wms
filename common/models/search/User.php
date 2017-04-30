@@ -19,7 +19,7 @@ class User extends UserModel
     {
         return [
             [['id', 'idRole', 'status'], 'integer'],
-            [['username', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'createdAt', 'updatedAt', 'deleteAt'], 'safe'],
+            [['username', 'auth_key', 'password_hash', 'password_reset_token', 'email', 'createdAt', 'updatedAt', 'deletedAt'], 'safe'],
         ];
     }
 
@@ -64,7 +64,7 @@ class User extends UserModel
             'status' => $this->status,
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,
-            'deleteAt' => $this->deleteAt,
+            'deletedAt' => $this->deletedAt,
         ]);
 
         $query->andFilterWhere(['like', 'username', $this->username])

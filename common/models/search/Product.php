@@ -19,7 +19,7 @@ class Product extends ProductModel
     {
         return [
             [['id', 'idType', 'idWarehouse', 'max', 'min'], 'integer'],
-            [['name', 'sku', 'barcode', 'remark', 'createdAt', 'updatedAt', 'deleteAt'], 'safe'],
+            [['name', 'sku', 'barcode', 'remark', 'createdAt', 'updatedAt', 'deletedAt'], 'safe'],
         ];
     }
 
@@ -66,7 +66,7 @@ class Product extends ProductModel
             'min' => $this->min,
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,
-            'deleteAt' => $this->deleteAt,
+            'deletedAt' => $this->deletedAt,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

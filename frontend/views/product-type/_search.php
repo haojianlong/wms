@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\search\WarehouseType */
+/* @var $model common\models\search\ProductType */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="warehouse-type-search">
+<div class="product-type-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -17,13 +17,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
+    <?= $form->field($model, 'idParent') ?>
+
     <?= $form->field($model, 'name') ?>
 
     <?= $form->field($model, 'createdAt') ?>
 
     <?= $form->field($model, 'updatedAt') ?>
 
-    <?= $form->field($model, 'deleteAt') ?>
+    <?php // echo $form->field($model, 'deletedAt') ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Search'), ['class' => 'btn btn-primary']) ?>

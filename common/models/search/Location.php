@@ -19,7 +19,7 @@ class Location extends LocationModel
     {
         return [
             [['id', 'status'], 'integer'],
-            [['name', 'address', 'remark', 'createdAt', 'updatedAt', 'deleteAt'], 'safe'],
+            [['name', 'address', 'remark', 'createdAt', 'updatedAt', 'deletedAt'], 'safe'],
         ];
     }
 
@@ -63,7 +63,7 @@ class Location extends LocationModel
             'status' => $this->status,
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,
-            'deleteAt' => $this->deleteAt,
+            'deletedAt' => $this->deletedAt,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

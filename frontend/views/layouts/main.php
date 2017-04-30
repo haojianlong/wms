@@ -29,16 +29,24 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => 'WMS',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' => 'AR', 'url' => ['a-r/index']],
+        ['label' => 'Company', 'url' => ['/company/index']],
+        ['label' => 'Company Type', 'url' => ['/company-type/index']],
+        ['label' => 'Location', 'url' => ['/location/index']],
+        ['label' => 'Product', 'url' => ['/product/index']],
+        ['label' => 'Product Type', 'url' => ['/product-type/index']],
+        ['label' => 'Role', 'url' => ['/role/index']],
+        ['label' => 'Transfer', 'url' => ['/transfer/index']],
+        ['label' => 'User', 'url' => ['/user/index']],
+        ['label' => 'Warehouse', 'url' => ['/warehouse/index']],
+        ['label' => 'Warehouse Type', 'url' => ['/warehouse-type/index']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];

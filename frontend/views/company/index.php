@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'remark',
             // 'createdAt',
             // 'updatedAt',
-            // 'deleteAt',
+            // 'deletedAt',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

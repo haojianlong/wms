@@ -23,11 +23,11 @@ use Yii;
  * @property string $remark
  * @property string $createdAt
  * @property string $updatedAt
- * @property string $deleteAt
+ * @property string $deletedAt
  *
  * @property CompanyType $type0
  */
-class Company extends \yii\db\ActiveRecord
+class Company extends \common\models\base\Company
 {
     /**
      * @inheritdoc
@@ -45,7 +45,7 @@ class Company extends \yii\db\ActiveRecord
         return [
             [['idType', 'name', 'contact', 'phone', 'fax', 'email', 'bank', 'bankAccount', 'zone', 'address', 'zipcode'], 'required'],
             [['idType'], 'integer'],
-            [['createdAt', 'updatedAt', 'deleteAt'], 'safe'],
+            [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],
             [['name', 'contact', 'phone', 'fax', 'email', 'bank', 'bankAccount', 'tariff', 'zone', 'address', 'zipcode', 'remark'], 'string', 'max' => 255],
             [['idType'], 'exist', 'skipOnError' => true, 'targetClass' => CompanyType::className(), 'targetAttribute' => ['idType' => 'id']],
         ];
@@ -73,7 +73,7 @@ class Company extends \yii\db\ActiveRecord
             'remark' => Yii::t('app', 'Remark'),
             'createdAt' => Yii::t('app', 'Created At'),
             'updatedAt' => Yii::t('app', 'Updated At'),
-            'deleteAt' => Yii::t('app', 'Delete At'),
+            'deletedAt' => Yii::t('app', 'Delete At'),
         ];
     }
 

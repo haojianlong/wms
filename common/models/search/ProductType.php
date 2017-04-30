@@ -19,7 +19,7 @@ class ProductType extends ProductTypeModel
     {
         return [
             [['id', 'idParent'], 'integer'],
-            [['name', 'createdAt', 'updatedAt', 'deleteAt'], 'safe'],
+            [['name', 'createdAt', 'updatedAt', 'deletedAt'], 'safe'],
         ];
     }
 
@@ -63,7 +63,7 @@ class ProductType extends ProductTypeModel
             'idParent' => $this->idParent,
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,
-            'deleteAt' => $this->deleteAt,
+            'deletedAt' => $this->deletedAt,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name]);

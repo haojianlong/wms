@@ -19,7 +19,7 @@ class Company extends CompanyModel
     {
         return [
             [['id', 'idType'], 'integer'],
-            [['name', 'contact', 'phone', 'fax', 'email', 'bank', 'bankAccount', 'tariff', 'zone', 'address', 'zipcode', 'remark', 'createdAt', 'updatedAt', 'deleteAt'], 'safe'],
+            [['name', 'contact', 'phone', 'fax', 'email', 'bank', 'bankAccount', 'tariff', 'zone', 'address', 'zipcode', 'remark', 'createdAt', 'updatedAt', 'deletedAt'], 'safe'],
         ];
     }
 
@@ -63,7 +63,7 @@ class Company extends CompanyModel
             'idType' => $this->idType,
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,
-            'deleteAt' => $this->deleteAt,
+            'deletedAt' => $this->deletedAt,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

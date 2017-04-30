@@ -14,9 +14,9 @@ use Yii;
  * @property string $note
  * @property string $createdAt
  * @property string $updatedAt
- * @property string $deleteAt
+ * @property string $deletedAt
  */
-class Transfer extends \yii\db\ActiveRecord
+class Transfer extends \common\models\base\Transfer
 {
     /**
      * @inheritdoc
@@ -34,7 +34,7 @@ class Transfer extends \yii\db\ActiveRecord
         return [
             [['idArOut', 'idArInto', 'quantity'], 'required'],
             [['idArOut', 'idArInto', 'quantity'], 'integer'],
-            [['createdAt', 'updatedAt', 'deleteAt'], 'safe'],
+            [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],
             [['note'], 'string', 'max' => 255],
         ];
     }
@@ -52,7 +52,7 @@ class Transfer extends \yii\db\ActiveRecord
             'note' => Yii::t('app', 'Note'),
             'createdAt' => Yii::t('app', 'Created At'),
             'updatedAt' => Yii::t('app', 'Updated At'),
-            'deleteAt' => Yii::t('app', 'Delete At'),
+            'deletedAt' => Yii::t('app', 'Delete At'),
         ];
     }
 }

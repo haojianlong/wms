@@ -12,11 +12,11 @@ use Yii;
  * @property string $name
  * @property string $createdAt
  * @property string $updatedAt
- * @property string $deleteAt
+ * @property string $deletedAt
  *
  * @property Product[] $products
  */
-class ProductType extends \yii\db\ActiveRecord
+class ProductType extends \common\models\base\ProductType
 {
     /**
      * @inheritdoc
@@ -34,7 +34,7 @@ class ProductType extends \yii\db\ActiveRecord
         return [
             [['idParent'], 'integer'],
             [['name'], 'required'],
-            [['createdAt', 'updatedAt', 'deleteAt'], 'safe'],
+            [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],
             [['name'], 'string', 'max' => 255],
         ];
     }
@@ -50,7 +50,7 @@ class ProductType extends \yii\db\ActiveRecord
             'name' => Yii::t('app', 'Name'),
             'createdAt' => Yii::t('app', 'Created At'),
             'updatedAt' => Yii::t('app', 'Updated At'),
-            'deleteAt' => Yii::t('app', 'Delete At'),
+            'deletedAt' => Yii::t('app', 'Delete At'),
         ];
     }
 

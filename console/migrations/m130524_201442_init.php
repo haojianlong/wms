@@ -11,7 +11,7 @@ class m130524_201442_init extends Migration
         $default = [
             'createdAt' => Schema::TYPE_DATETIME . ' NOT NULL DEFAULT CURRENT_TIMESTAMP',
             'updatedAt' => Schema::TYPE_DATETIME . ' NOT NULL DEFAULT CURRENT_TIMESTAMP',
-            'deleteAt' => $this->dateTime()->defaultValue(null),
+            'deletedAt' => $this->dateTime()->defaultValue(null),
         ];
         $tableOptions = null;
         if ($this->db->driverName === 'mysql') {

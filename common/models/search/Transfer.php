@@ -19,7 +19,7 @@ class Transfer extends TransferModel
     {
         return [
             [['id', 'idArOut', 'idArInto', 'quantity'], 'integer'],
-            [['note', 'createdAt', 'updatedAt', 'deleteAt'], 'safe'],
+            [['note', 'createdAt', 'updatedAt', 'deletedAt'], 'safe'],
         ];
     }
 
@@ -65,7 +65,7 @@ class Transfer extends TransferModel
             'quantity' => $this->quantity,
             'createdAt' => $this->createdAt,
             'updatedAt' => $this->updatedAt,
-            'deleteAt' => $this->deleteAt,
+            'deletedAt' => $this->deletedAt,
         ]);
 
         $query->andFilterWhere(['like', 'note', $this->note]);

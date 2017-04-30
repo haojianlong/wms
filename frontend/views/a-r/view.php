@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\WarehouseType */
+/* @var $model common\models\AR */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Warehouse Types'), 'url' => ['index']];
+$this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Ars'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="warehouse-type-view">
+<div class="ar-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,10 +29,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'name',
+            'idUser',
+            'idCompany',
+            'idProduct',
+            'idWarehouse',
+            'date',
+            'type',
+            'quantity',
+            'price',
+            'note',
             'createdAt',
             'updatedAt',
-            'deleteAt',
+            'deletedAt',
         ],
     ]) ?>
 

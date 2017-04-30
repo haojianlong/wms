@@ -17,12 +17,12 @@ use Yii;
  * @property string $remark
  * @property string $createdAt
  * @property string $updatedAt
- * @property string $deleteAt
+ * @property string $deletedAt
  *
  * @property Location $location
  * @property WarehouseType $type0
  */
-class Warehouse extends \yii\db\ActiveRecord
+class Warehouse extends \common\models\base\Warehouse
 {
     /**
      * @inheritdoc
@@ -40,7 +40,7 @@ class Warehouse extends \yii\db\ActiveRecord
         return [
             [['idType', 'idLocation', 'name', 'code', 'address'], 'required'],
             [['idType', 'idLocation', 'status'], 'integer'],
-            [['createdAt', 'updatedAt', 'deleteAt'], 'safe'],
+            [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],
             [['name', 'code', 'address', 'remark'], 'string', 'max' => 255],
             [['idLocation'], 'exist', 'skipOnError' => true, 'targetClass' => Location::className(), 'targetAttribute' => ['idLocation' => 'id']],
             [['idType'], 'exist', 'skipOnError' => true, 'targetClass' => WarehouseType::className(), 'targetAttribute' => ['idType' => 'id']],
@@ -63,7 +63,7 @@ class Warehouse extends \yii\db\ActiveRecord
             'remark' => Yii::t('app', 'Remark'),
             'createdAt' => Yii::t('app', 'Created At'),
             'updatedAt' => Yii::t('app', 'Updated At'),
-            'deleteAt' => Yii::t('app', 'Delete At'),
+            'deletedAt' => Yii::t('app', 'Delete At'),
         ];
     }
 

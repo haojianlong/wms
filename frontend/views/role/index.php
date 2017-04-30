@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'role',
             'createdAt',
             'updatedAt',
-            // 'deleteAt',
+            // 'deletedAt',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
