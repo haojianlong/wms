@@ -1,0 +1,22 @@
+
+.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+.icon-caret {
+    &:before {
+        content: "\e604";
+    }
+}
+
+.collapsed .icon-caret:before {
+    content: "\e605";
+}
+
+.icon-ET_help{
+    color: $bd-grey;
+}

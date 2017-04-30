@@ -1,0 +1,33 @@
+  @mixin media($media-query) {
+    @if $media-query == screen-ssm-max { // 在屏幕小于768下生效
+      @media only screen and (max-width: 768px) { @content; }
+    }
+
+    @if $media-query == screen-sm-min { // 在屏幕大于或等于768下生效
+      @media only screen and (min-width: 768px) { @content; }
+    }
+    
+    @if $media-query == screen-md-min { // 在屏幕大于或等于992下生效
+      @media only screen and (min-width: 992px) { @content; }
+    }
+
+    @if $media-query == screen-md-max { // 在最大等于992下生效
+      @media only screen and (max-width: 992px) { @content; }
+    }
+
+    @if $media-query == screen-lg-min { // 在屏幕大于或等于1200下生效
+      @media only screen and (min-width: 1200px) { @content; }
+    }
+    @if $media-query == screen-lg-max { // 在屏幕小于或等于1200下生效
+      @media only screen and (max-width: 1200px) { @content; }
+    }
+  }
+
+  // 定义box-sizing 浏览器前缀
+  @mixin box-sizing($sizing){
+    box-sizing:$sizing;
+  }
+  // 定义border-radius 定义圆角
+  @mixin border-radius($radius){
+    border-radius: 3px;
+  }

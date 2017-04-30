@@ -1,0 +1,75 @@
+.table > tbody > tr > td,
+.table > tbody > tr > th,
+.table > thead > tr > td,
+.table > thead > tr > th {
+    vertical-align: middle;
+    padding: 20px 0px 15px 20px;
+    border-top: 1px solid $bd-table-grey;
+}
+
+.table {
+    margin-bottom: 0;
+    > thead > tr > th {
+        border-bottom: 2px solid $bd-table-grey;
+        font-weight: 400;
+        color: $body-text-grey;
+    }
+    > tbody {
+        tr {
+            td {
+                color: $light-grey;
+                .icon-ET_more{
+                    width: 20px;
+                    height: 20px;
+                    cursor: pointer;
+
+                }
+            }
+        }
+    }
+}
+
+.table-detail {
+    > thead {
+        th {
+            font-weight: 400;
+            //text-decoration: underline;
+        }
+    }
+    > tbody {
+
+        > tr:nth-child(2n+1) {
+
+            background: $bg-table-grey;
+        }
+        > tr:nth-child(4n-1) {
+
+            background: $white;
+        }
+        > tr:nth-child(2n) {
+            background: $bg-table-blue;
+        }
+    }
+    table {
+        margin-top: -15px;
+    }
+    .table > tbody > tr > td,
+    .table > tbody > tr > th,
+    .table > thead > tr > td,
+    .table > thead > tr > th {
+        border: 0;
+        border-bottom: 1px solid $bd-table-grey;
+    }
+    .table > thead > tr > th {
+        background: $bg-table-blue;
+        border-bottom: 2px solid $bd-table-grey;
+    }
+}
+
+.collateral {
+    border-bottom: 1px solid $bd-table-grey;
+    margin: 0 -15px;
+    padding: 30px 0 40px;
+    text-align: center;
+}
+

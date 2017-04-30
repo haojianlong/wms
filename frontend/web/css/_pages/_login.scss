@@ -1,0 +1,31 @@
+
+.login-wrap {
+    width:100%;
+    display:table;
+    height: 100%;
+    font-size: 14px;
+    .login{
+        display: table-cell;
+        vertical-align: middle;
+        *position:absolute;
+        *top:50%;
+    }
+    .login-auto-center{
+        *position:relative;
+        *top:-50%;
+        margin:0 auto;
+        max-width:560px;
+        .checkbox{
+            display: inline-block;
+        }
+        div{
+            margin-top: 10px;
+            font-size: 12px;
+            a{
+                text-decoration: underline;
+                color: $body-text-grey;
+            }
+        }
+
+    }
+}

@@ -1,0 +1,27 @@
+.disclosure{
+    color : $text-paragraph-grey;
+    h4{
+        margin-top: 0;
+    }
+    ul{
+        margin-bottom: 20px;
+        li{
+            position: relative;
+            padding-left: 25px;
+            color: $text-paragraph-grey;
+            &:before{
+                content: " ";
+                position: absolute;
+                width: 3px;
+                height: 3px;
+                border-radius: 50%;
+                background: $text-paragraph-grey;
+                left: 5px;
+                top: 7px;
+            }
+        }
+    }
+    p{
+        margin-bottom: 20px;
+    }
+}

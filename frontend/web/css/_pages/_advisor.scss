@@ -1,0 +1,80 @@
+
+
+.task-zone-tp {
+    padding: 50px 50px;
+    height: 186px;
+    text-align: center;
+    div {
+        font-size: 18px;
+        margin-top: 8px;
+    }
+    em {
+        font: {
+            size: 30px;
+            style: normal;
+        }
+        margin: 3px 0 0 21px;
+        // color: $color-shallow-red;
+        display: inline-block;
+        padding: 5px 22px;
+        border-radius: 55px;
+        font-weight: normal;
+    }
+}
+
+// Advisor Dashboard 进度条控件
+
+.dashboard-line-wrap {
+    height: 184px;
+    background-color: $navy;
+    position: relative;
+    .line-progress-wrap {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        padding: 0 32px;
+        overflow: hidden;
+        .line-progress {
+            position: relative;
+            height: 100%;
+            width: 65%;
+            box-shadow: inset -1px 0 0 0 $red;
+            .progress-number-wrap {
+                width: auto;
+                position: absolute;
+                top: 16px;
+                right: -165px;
+                white-space: nowrap;
+                .line-percentage {
+                    font-size: 18px;
+                    color: $red;
+                }
+                .line-balance {
+                    color: $white;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+    .dashboard-line-progress-wrap {
+        padding: 32px;
+        padding-top: 80px;
+        .progress {
+            height: 18px;
+            background: $bd-table-grey;
+            border-radius: 2px;
+            margin-bottom: 10px;
+            .progress-bar-primary {
+                background: #4A90E2;
+            }
+            .progress-bar-warning {
+                background: #F2DC17;
+            }
+            .progress-bar-danger {
+                background: #E33501;
+            }
+        }
+    }
+}
