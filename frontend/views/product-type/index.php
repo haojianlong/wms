@@ -26,12 +26,18 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'idParent',
+            [
+                'attribute' => 'idParent',
+                'value' => function($model){
+                    if ($model->parent) {
+                        return $model->parent->name;
+                    }
+                    return Yii::t('app', 'not set');
+                },
+            ],
             'name',
             'createdAt',
             'updatedAt',
-            // 'deletedAt',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

@@ -28,12 +28,18 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'id',
-            'idParent',
+            [
+                'attribute' => 'idParent',
+                'value' => function($model){
+                    if ($model->parent) {
+                        return $model->parent->name;
+                    }
+                    return Yii::t('app', 'not set');
+                },
+            ],
             'name',
             'createdAt',
             'updatedAt',
-            'deletedAt',
         ],
     ]) ?>
 

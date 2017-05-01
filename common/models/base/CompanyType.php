@@ -12,8 +12,6 @@ use Yii;
  * @property string $createdAt
  * @property string $updatedAt
  * @property string $deletedAt
- *
- * @property Company[] $companies
  */
 class CompanyType extends base
 {
@@ -48,13 +46,5 @@ class CompanyType extends base
             'updatedAt' => Yii::t('app', 'Updated At'),
             'deletedAt' => Yii::t('app', 'Delete At'),
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getCompanies()
-    {
-        return $this->hasMany(Company::className(), ['idType' => 'id']);
     }
 }

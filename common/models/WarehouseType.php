@@ -17,38 +17,8 @@ use Yii;
  */
 class WarehouseType extends \common\models\base\WarehouseType
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'warehouse_type';
-    }
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],
-            [['name'], 'string', 'max' => 255],
-        ];
-    }
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => Yii::t('app', 'ID'),
-            'name' => Yii::t('app', 'Name'),
-            'createdAt' => Yii::t('app', 'Created At'),
-            'updatedAt' => Yii::t('app', 'Updated At'),
-            'deletedAt' => Yii::t('app', 'Delete At'),
-        ];
-    }
 
     /**
      * @return \yii\db\ActiveQuery

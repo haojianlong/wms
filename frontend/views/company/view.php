@@ -29,7 +29,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'idType',
+            [
+                'attribute' => 'idType',
+                'value' => function($model){
+                    return $model->type->name;
+                },
+            ],
             'name',
             'contact',
             'phone',
@@ -44,7 +49,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'remark',
             'createdAt',
             'updatedAt',
-            'deletedAt',
         ],
     ]) ?>
 

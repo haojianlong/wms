@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\widgets\Select2;
+use common\models\CompanyType;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Company */
@@ -12,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'idType')->textInput() ?>
+    <?=$form->field($model, 'idType')->widget(Select2::classname(), ['data' => CompanyType::getNames()]);?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
@@ -38,11 +40,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'remark')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'createdAt')->textInput() ?>
-
-    <?= $form->field($model, 'updatedAt')->textInput() ?>
-
-    <?= $form->field($model, 'deletedAt')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

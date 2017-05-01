@@ -38,15 +38,15 @@ AppAsset::register($this);
     $menuItems = [
         ['label' => 'AR', 'url' => ['a-r/index']],
         ['label' => 'Company', 'url' => ['/company/index']],
-        ['label' => 'Company Type', 'url' => ['/company-type/index']],
         ['label' => 'Location', 'url' => ['/location/index']],
         ['label' => 'Product', 'url' => ['/product/index']],
-        ['label' => 'Product Type', 'url' => ['/product-type/index']],
         ['label' => 'Role', 'url' => ['/role/index']],
         ['label' => 'Transfer', 'url' => ['/transfer/index']],
         ['label' => 'User', 'url' => ['/user/index']],
         ['label' => 'Warehouse', 'url' => ['/warehouse/index']],
         ['label' => 'Warehouse Type', 'url' => ['/warehouse-type/index']],
+        ['label' => 'Product Type', 'url' => ['/product-type/index']],
+        ['label' => 'Company Type', 'url' => ['/company-type/index']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];

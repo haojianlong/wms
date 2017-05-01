@@ -38,7 +38,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'remark',
             'createdAt',
             'updatedAt',
-            'deletedAt',
         ],
     ]) ?>
 

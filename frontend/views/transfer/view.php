@@ -35,7 +35,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'note',
             'createdAt',
             'updatedAt',
-            'deletedAt',
         ],
     ]) ?>
 

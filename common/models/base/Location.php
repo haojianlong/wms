@@ -15,8 +15,6 @@ use Yii;
  * @property string $createdAt
  * @property string $updatedAt
  * @property string $deletedAt
- *
- * @property Warehouse[] $warehouses
  */
 class Location extends base
 {
@@ -34,7 +32,7 @@ class Location extends base
     public function rules()
     {
         return [
-            [['status', 'name', 'address'], 'required'],
+            [['name', 'address'], 'required'],
             [['status'], 'integer'],
             [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],
             [['name', 'address', 'remark'], 'string', 'max' => 255],
@@ -56,13 +54,5 @@ class Location extends base
             'updatedAt' => Yii::t('app', 'Updated At'),
             'deletedAt' => Yii::t('app', 'Delete At'),
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getWarehouses()
-    {
-        return $this->hasMany(Warehouse::className(), ['idLocation' => 'id']);
     }
 }

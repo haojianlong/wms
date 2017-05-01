@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "company_type".
@@ -14,47 +15,23 @@ use Yii;
  * @property string $deletedAt
  *
  * @property Company[] $companies
+ * @array name[] $names
  */
 class CompanyType extends \common\models\base\CompanyType
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'company_type';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],
-            [['name'], 'string', 'max' => 255],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => Yii::t('app', 'ID'),
-            'name' => Yii::t('app', 'Name'),
-            'createdAt' => Yii::t('app', 'Created At'),
-            'updatedAt' => Yii::t('app', 'Updated At'),
-            'deletedAt' => Yii::t('app', 'Delete At'),
-        ];
-    }
-
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getCompanies()
     {
         return $this->hasMany(Company::className(), ['idType' => 'id']);
+    }
+
+    /**
+     * @return array $names
+     */
+    public static function getNames()
+    {
+        return ArrayHelper::map(self::find()->asArray()->all(),'id', 'name');
     }
 }

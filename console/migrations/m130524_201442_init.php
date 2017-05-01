@@ -82,7 +82,7 @@ class m130524_201442_init extends Migration
 
         $this->createTable('{{%location}}', array_merge([
             'id' => $this->primaryKey(),
-            'status' => $this->smallInteger()->notNull(),
+            'status' => $this->smallInteger()->notNull()->defaultValue(1),
             'name' => $this->string(255)->notNull(),
             'address' => $this->string(255)->notNull(),
             'remark' => $this->string(255),

@@ -24,8 +24,6 @@ use Yii;
  * @property string $createdAt
  * @property string $updatedAt
  * @property string $deletedAt
- *
- * @property CompanyType $type0
  */
 class Company extends base
 {
@@ -58,7 +56,7 @@ class Company extends base
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'idType' => Yii::t('app', 'Id Type'),
+            'idType' => Yii::t('app', 'Type'),
             'name' => Yii::t('app', 'Name'),
             'contact' => Yii::t('app', 'Contact'),
             'phone' => Yii::t('app', 'Phone'),
@@ -75,13 +73,5 @@ class Company extends base
             'updatedAt' => Yii::t('app', 'Updated At'),
             'deletedAt' => Yii::t('app', 'Delete At'),
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getType0()
-    {
-        return $this->hasOne(CompanyType::className(), ['id' => 'idType']);
     }
 }

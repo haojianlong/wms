@@ -64,7 +64,6 @@ class ProductTypeController extends Controller
     public function actionCreate()
     {
         $model = new ProductType();
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {

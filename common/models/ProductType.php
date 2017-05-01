@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "product_type".
@@ -15,50 +16,34 @@ use Yii;
  * @property string $deletedAt
  *
  * @property Product[] $products
+ * @array Parent[] $parents
+ * @property Parent $parent
  */
 class ProductType extends \common\models\base\ProductType
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'product_type';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['idParent'], 'integer'],
-            [['name'], 'required'],
-            [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],
-            [['name'], 'string', 'max' => 255],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => Yii::t('app', 'ID'),
-            'idParent' => Yii::t('app', 'Id Parent'),
-            'name' => Yii::t('app', 'Name'),
-            'createdAt' => Yii::t('app', 'Created At'),
-            'updatedAt' => Yii::t('app', 'Updated At'),
-            'deletedAt' => Yii::t('app', 'Delete At'),
-        ];
-    }
-
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getProducts()
     {
         return $this->hasMany(Product::className(), ['idType' => 'id']);
+    }
+
+    /**
+     * @return array $parents
+     */
+    public function getParents()
+    {
+        $parents = [0 => Yii::t('app', 'not set')] + ArrayHelper::map(self::find()->where(['idParent' => 0])->asArray()->all(),'id', 'name');
+        unset($parents[$this->id]);
+        return $parents;
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getParent()
+    {
+        return self::findOne($this->idParent);
     }
 }

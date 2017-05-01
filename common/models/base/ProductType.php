@@ -13,8 +13,6 @@ use Yii;
  * @property string $createdAt
  * @property string $updatedAt
  * @property string $deletedAt
- *
- * @property Product[] $products
  */
 class ProductType extends base
 {
@@ -46,19 +44,11 @@ class ProductType extends base
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'idParent' => Yii::t('app', 'Id Parent'),
+            'idParent' => Yii::t('app', 'Parent Type'),
             'name' => Yii::t('app', 'Name'),
             'createdAt' => Yii::t('app', 'Created At'),
             'updatedAt' => Yii::t('app', 'Updated At'),
             'deletedAt' => Yii::t('app', 'Delete At'),
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getProducts()
-    {
-        return $this->hasMany(Product::className(), ['idType' => 'id']);
     }
 }

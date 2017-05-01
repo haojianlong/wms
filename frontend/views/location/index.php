@@ -24,16 +24,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
-            'status',
+            [
+                'attribute' => 'status',
+                'value' => function($model){
+                    return Yii::t('app', $model::$status[$model->status]);
+                },
+            ],
             'name',
             'address',
             'remark',
-            // 'createdAt',
-            // 'updatedAt',
-            // 'deletedAt',
-
+            'createdAt',
+            'updatedAt',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
