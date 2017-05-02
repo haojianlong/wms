@@ -22,7 +22,7 @@ use Yii;
  * @property Location $location
  * @property WarehouseType $type0
  */
-class Warehouse extends base
+class Warehouse extends Base
 {
     /**
      * @inheritdoc

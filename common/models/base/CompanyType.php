@@ -13,7 +13,7 @@ use Yii;
  * @property string $updatedAt
  * @property string $deletedAt
  */
-class CompanyType extends base
+class CompanyType extends Base
 {
     /**
      * @inheritdoc

@@ -15,7 +15,7 @@ use Yii;
  *
  * @property Warehouse[] $warehouses
  */
-class WarehouseType extends base
+class WarehouseType extends Base
 {
     /**
      * @inheritdoc

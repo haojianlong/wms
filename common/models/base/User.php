@@ -25,7 +25,7 @@ use yii\web\IdentityInterface;
  *
  * @property Role $role
  */
-class User extends base
+class User extends Base
 {
 
 	const STATUS_DELETED = 0;

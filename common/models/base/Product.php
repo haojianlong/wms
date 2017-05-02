@@ -22,7 +22,7 @@ use Yii;
  *
  * @property ProductType $type0
  */
-class Product extends base
+class Product extends Base
 {
     /**
      * @inheritdoc

@@ -16,7 +16,7 @@ use Yii;
  * @property string $updatedAt
  * @property string $deletedAt
  */
-class Transfer extends base
+class Transfer extends Base
 {
     /**
      * @inheritdoc

@@ -16,7 +16,7 @@ use Yii;
  *
  * @property User[] $users
  */
-class Role extends base
+class Role extends Base
 {
     /**
      * @inheritdoc
