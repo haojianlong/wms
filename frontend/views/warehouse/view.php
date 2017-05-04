@@ -29,11 +29,26 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'idType',
-            'idLocation',
-            'status',
             'name',
             'code',
+            [
+                'attribute' => 'idType',
+                'value' => function($model){
+                    return $model->type->name;
+                },
+            ],
+            [
+                'attribute' => 'idLocation',
+                'value' => function($model){
+                    return $model->location->name;
+                },
+            ],
+            [
+                'attribute' => 'status',
+                'value' => function($model){
+                    return Yii::t('app', $model::$status[$model->status]);
+                },
+            ],
             'address',
             'remark',
             'createdAt',

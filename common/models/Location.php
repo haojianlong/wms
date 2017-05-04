@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "location".
@@ -17,6 +18,7 @@ use Yii;
  * @property string $deletedAt
  *
  * @property Warehouse[] $warehouses
+ * @array name[] $names
  */
 class Location extends \common\models\base\Location
 {
@@ -38,4 +40,13 @@ class Location extends \common\models\base\Location
     {
         return $this->hasMany(Warehouse::className(), ['idLocation' => 'id']);
     }
+
+     /**
+     * @return array $names
+     */
+    public static function getNames()
+    {
+        return ArrayHelper::map(self::find()->asArray()->all(),'id', 'name');
+    }
+
 }

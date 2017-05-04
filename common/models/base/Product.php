@@ -19,8 +19,6 @@ use Yii;
  * @property string $createdAt
  * @property string $updatedAt
  * @property string $deletedAt
- *
- * @property ProductType $type0
  */
 class Product extends Base
 {
@@ -53,8 +51,8 @@ class Product extends Base
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'idType' => Yii::t('app', 'Id Type'),
-            'idWarehouse' => Yii::t('app', 'Id Warehouse'),
+            'idType' => Yii::t('app', 'Type'),
+            'idWarehouse' => Yii::t('app', 'Warehouse'),
             'max' => Yii::t('app', 'Max'),
             'min' => Yii::t('app', 'Min'),
             'name' => Yii::t('app', 'Name'),
@@ -65,13 +63,5 @@ class Product extends Base
             'updatedAt' => Yii::t('app', 'Updated At'),
             'deletedAt' => Yii::t('app', 'Delete At'),
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getType0()
-    {
-        return $this->hasOne(ProductType::className(), ['id' => 'idType']);
     }
 }

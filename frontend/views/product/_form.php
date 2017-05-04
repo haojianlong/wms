@@ -2,6 +2,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use common\models\Warehouse;
+use kartik\widgets\Select2;
+
+//$this->registerJsFile('/yii/web/js/receive-payment.js', ['depends' => ['app\assets\AppAsset'], 'position' => $this::POS_END]);
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Product */
@@ -12,17 +16,17 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'sku')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'idType')->textInput() ?>
 
-    <?= $form->field($model, 'idWarehouse')->textInput() ?>
+    <?=$form->field($model, 'idWarehouse')->widget(Select2::classname(), ['data' => Warehouse::getNames()]);?>
 
     <?= $form->field($model, 'max')->textInput() ?>
 
     <?= $form->field($model, 'min')->textInput() ?>
-
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'sku')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'barcode')->textInput(['maxlength' => true]) ?>
 

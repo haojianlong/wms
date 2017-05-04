@@ -18,9 +18,6 @@ use Yii;
  * @property string $createdAt
  * @property string $updatedAt
  * @property string $deletedAt
- *
- * @property Location $location
- * @property WarehouseType $type0
  */
 class Warehouse extends Base
 {
@@ -54,8 +51,8 @@ class Warehouse extends Base
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'idType' => Yii::t('app', 'Id Type'),
-            'idLocation' => Yii::t('app', 'Id Location'),
+            'idType' => Yii::t('app', 'Type'),
+            'idLocation' => Yii::t('app', 'Location'),
             'status' => Yii::t('app', 'Status'),
             'name' => Yii::t('app', 'Name'),
             'code' => Yii::t('app', 'Code'),
@@ -65,21 +62,5 @@ class Warehouse extends Base
             'updatedAt' => Yii::t('app', 'Updated At'),
             'deletedAt' => Yii::t('app', 'Delete At'),
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getLocation()
-    {
-        return $this->hasOne(Location::className(), ['id' => 'idLocation']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getType0()
-    {
-        return $this->hasOne(WarehouseType::className(), ['id' => 'idType']);
     }
 }

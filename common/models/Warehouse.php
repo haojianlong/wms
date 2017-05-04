@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "warehouse".
@@ -20,52 +21,21 @@ use Yii;
  * @property string $deletedAt
  *
  * @property Location $location
- * @property WarehouseType $type0
+ * @array name[] $names
+ * @property WarehouseType $type
  */
 class Warehouse extends \common\models\base\Warehouse
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'warehouse';
-    }
+    const STATUS_CLOSED = 0;
+    const STATUS_ACTIVE = 1;
 
     /**
-     * @inheritdoc
+     * @var array
      */
-    public function rules()
-    {
-        return [
-            [['idType', 'idLocation', 'name', 'code', 'address'], 'required'],
-            [['idType', 'idLocation', 'status'], 'integer'],
-            [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],
-            [['name', 'code', 'address', 'remark'], 'string', 'max' => 255],
-            [['idLocation'], 'exist', 'skipOnError' => true, 'targetClass' => Location::className(), 'targetAttribute' => ['idLocation' => 'id']],
-            [['idType'], 'exist', 'skipOnError' => true, 'targetClass' => WarehouseType::className(), 'targetAttribute' => ['idType' => 'id']],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => Yii::t('app', 'ID'),
-            'idType' => Yii::t('app', 'Id Type'),
-            'idLocation' => Yii::t('app', 'Id Location'),
-            'status' => Yii::t('app', 'Status'),
-            'name' => Yii::t('app', 'Name'),
-            'code' => Yii::t('app', 'Code'),
-            'address' => Yii::t('app', 'Address'),
-            'remark' => Yii::t('app', 'Remark'),
-            'createdAt' => Yii::t('app', 'Created At'),
-            'updatedAt' => Yii::t('app', 'Updated At'),
-            'deletedAt' => Yii::t('app', 'Delete At'),
-        ];
-    }
+    public static $status = [
+        self::STATUS_ACTIVE => 'ACTIVE',
+        self::STATUS_CLOSED => 'CLOSED',
+    ];
 
     /**
      * @return \yii\db\ActiveQuery
@@ -78,8 +48,16 @@ class Warehouse extends \common\models\base\Warehouse
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getType0()
+    public function getType()
     {
         return $this->hasOne(WarehouseType::className(), ['id' => 'idType']);
+    }
+
+    /**
+     * @return array $names
+     */
+    public static function getNames()
+    {
+        return ArrayHelper::map(self::find()->asArray()->all(),'id', 'name');
     }
 }

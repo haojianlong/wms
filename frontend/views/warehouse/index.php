@@ -24,19 +24,31 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-
             'id',
-            'idType',
-            'idLocation',
-            'status',
+            [
+                'attribute' => 'idType',
+                'value' => function($model){
+                    return $model->type->name;
+                },
+            ],
+            [
+                'attribute' => 'idLocation',
+                'value' => function($model){
+                    return $model->location->name;
+                },
+            ],
+            [
+                'attribute' => 'status',
+                'value' => function($model){
+                    return Yii::t('app', $model::$status[$model->status]);
+                },
+            ],
             'name',
-            // 'code',
+            'code',
             // 'address',
             // 'remark',
             // 'createdAt',
             // 'updatedAt',
-            // 'deletedAt',
-
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
