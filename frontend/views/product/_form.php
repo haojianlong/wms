@@ -3,9 +3,10 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use common\models\Warehouse;
+use common\models\ProductType;
 use kartik\widgets\Select2;
 
-//$this->registerJsFile('/yii/web/js/receive-payment.js', ['depends' => ['app\assets\AppAsset'], 'position' => $this::POS_END]);
+$this->registerJsFile('@web/js/product.js', ['depends' => ['frontend\assets\AppAsset'], 'position' => $this::POS_END]);
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Product */
@@ -20,7 +21,26 @@ use kartik\widgets\Select2;
 
     <?= $form->field($model, 'sku')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'idType')->textInput() ?>
+    <div class="form-group">
+        <label for="supertype">Supertype</label>
+        <?= Select2::widget([
+            'options' => [
+                'class'=>'form-control',
+                'id' =>'supertype',
+            ],
+            'name' => 'supertype',
+            'data' => ProductType::getParents()
+        ]);?>
+    </div>
+
+    <?=$form->field($model, 'idType')->label('Subtype')
+        ->widget(Select2::classname(), [
+            'data' => [],
+            'options' => [
+                'placeholder' => 'Select ...',
+                'id'=>'subtype',
+            ],
+    ]);?>
 
     <?=$form->field($model, 'idWarehouse')->widget(Select2::classname(), ['data' => Warehouse::getNames()]);?>
 

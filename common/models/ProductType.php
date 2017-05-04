@@ -18,6 +18,7 @@ use yii\helpers\ArrayHelper;
  * @property Product[] $products
  * @array Parent[] $parents
  * @property Parent $parent
+ * @array name[] $names
  */
 class ProductType extends \common\models\base\ProductType
 {
@@ -32,10 +33,18 @@ class ProductType extends \common\models\base\ProductType
     /**
      * @return array $parents
      */
-    public function getParents()
+    public static function getParents($id = null)
     {
-        $parents = [0 => Yii::t('app', 'not set')] + ArrayHelper::map(self::find()->where(['idParent' => 0])->asArray()->all(),'id', 'name');
-        unset($parents[$this->id]);
+        $parents = [0 => Yii::t('app', 'not set')] + ArrayHelper::map(self::find()->where(['idParent' => 0])->filterWhere(['<>', 'id', $id])->asArray()->all(),'id', 'name');
+        return $parents;
+    }
+
+    /**
+     * @return array $names
+     */
+    public static function getNames($idParent = null)
+    {
+        $parents = ArrayHelper::map(self::find()->filterWhere(['idParent' => $idParent])->asArray()->all(),'id', 'name');
         return $parents;
     }
 

@@ -15,8 +15,8 @@ use kartik\widgets\Select2;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?=$form->field($model, 'idParent')->widget(Select2::classname(), [
-        'data' => $model->parents,
+    <?= $form->field($model, 'idParent')->widget(Select2::classname(), [
+        'data' => $model::getParents($model->id),
     ]);?>
 
 

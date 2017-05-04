@@ -8,6 +8,7 @@ use common\models\search\ProductType as ProductTypeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\helpers\Json;
 
 /**
  * ProductTypeController implements the CRUD actions for ProductType model.
@@ -119,5 +120,18 @@ class ProductTypeController extends Controller
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
+    }
+
+    /**
+     * get [id => name] by idParent.
+     * @param integer $idParent
+     * @return mixed
+     */
+    public function actionNames($idParent)
+    {
+        if (Yii::$app->request->isAjax) {
+            return Json::encode(ProductType::getNames((int)$idParent));
+        }
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }
