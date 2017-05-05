@@ -18,7 +18,7 @@ class Product extends ProductModel
     public function rules()
     {
         return [
-            [['id', 'idType', 'idWarehouse', 'max', 'min'], 'integer'],
+            [['id', 'idType', 'idWarehouse', 'max', 'min', 'quantity'], 'integer'],
             [['name', 'sku', 'barcode', 'remark', 'createdAt', 'updatedAt', 'deletedAt'], 'safe'],
         ];
     }
@@ -61,6 +61,7 @@ class Product extends ProductModel
         $query->andFilterWhere([
             'id' => $this->id,
             'idType' => $this->idType,
+            'quantity' => $this->quantity,
             'idWarehouse' => $this->idWarehouse,
             'max' => $this->max,
             'min' => $this->min,

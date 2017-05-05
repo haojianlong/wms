@@ -29,15 +29,17 @@ $this->registerJsFile('@web/js/product.js', ['depends' => ['frontend\assets\AppA
                 'id' =>'supertype',
             ],
             'name' => 'supertype',
+            'value' => $model->idType ? $model->type->idParent : '',
             'data' => ProductType::getParents()
         ]);?>
     </div>
 
     <?=$form->field($model, 'idType')->label('Subtype')
         ->widget(Select2::classname(), [
-            'data' => [],
+            'data' => ProductType::getNames(0),
+            'value' => $model->idType,
             'options' => [
-                'placeholder' => 'Select ...',
+                'placeholder' => 'Please select ...',
                 'id'=>'subtype',
             ],
     ]);?>

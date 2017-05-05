@@ -35,7 +35,7 @@ class ProductType extends \common\models\base\ProductType
      */
     public static function getParents($id = null)
     {
-        $parents = [0 => Yii::t('app', 'not set')] + ArrayHelper::map(self::find()->where(['idParent' => 0])->filterWhere(['<>', 'id', $id])->asArray()->all(),'id', 'name');
+        $parents = [0 => 'Default'] + ArrayHelper::map(self::find()->where(['idParent' => 0])->filterWhere(['<>', 'id', $id])->asArray()->all(),'id', 'name');
         return $parents;
     }
 
@@ -44,7 +44,15 @@ class ProductType extends \common\models\base\ProductType
      */
     public static function getNames($idParent = null)
     {
-        $parents = ArrayHelper::map(self::find()->filterWhere(['idParent' => $idParent])->asArray()->all(),'id', 'name');
+        $find = self::find()->asArray();
+        if ($idParent == 0) {
+            $find->where(['<>', 'idParent', 0]);
+        } else {
+            $find->filterWhere(['idParent' => $idParent]);
+        }
+
+        $parents = ArrayHelper::map($find->all(), 'id', 'name');
+
         return $parents;
     }
 

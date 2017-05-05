@@ -21,6 +21,7 @@ use Yii;
  * @property string $deletedAt
  *
  * @property ProductType $type
+ * @property Warehouse $warehouse
  */
 class Product extends \common\models\base\Product
 {
@@ -30,5 +31,13 @@ class Product extends \common\models\base\Product
     public function getType()
     {
         return $this->hasOne(ProductType::className(), ['id' => 'idType']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getWarehouse()
+    {
+        return $this->hasOne(Warehouse::className(), ['id' => 'idWarehouse']);
     }
 }

@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel common\models\search\AR */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Ars');
+$this->title = Yii::t('app', 'Ar');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="ar-index">

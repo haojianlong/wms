@@ -26,14 +26,20 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'idType',
-            'idWarehouse',
-            'max',
-            'min',
-            // 'name',
-            // 'sku',
+            'name',
+            'sku',
+            'quantity',
+            [
+                'attribute' => 'idWarehouse',
+                'value' => function($model){
+                    return $model->warehouse->name;
+                },
+            ],
             // 'barcode',
-            // 'remark',
+            'remark',
+            // 'idType',
+            // 'max',
+            // 'min',
             // 'createdAt',
             // 'updatedAt',
             // 'deletedAt',

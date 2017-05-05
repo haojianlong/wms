@@ -12,6 +12,7 @@ use Yii;
  * @property int $idWarehouse
  * @property int $max
  * @property int $min
+ * @property int $quantity
  * @property string $name
  * @property string $sku
  * @property string $barcode
@@ -37,9 +38,10 @@ class Product extends Base
     {
         return [
             [['idType', 'idWarehouse', 'max', 'name', 'sku', 'barcode'], 'required'],
-            [['idType', 'idWarehouse', 'max', 'min'], 'integer'],
+            [['idType', 'idWarehouse', 'max', 'min', 'quantity'], 'integer'],
             [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],
             [['name', 'sku', 'barcode', 'remark'], 'string', 'max' => 255],
+            ['min', 'compare', 'type'=> 'number', 'compareAttribute' =>'max', 'operator' => '<'],
             [['idType'], 'exist', 'skipOnError' => true, 'targetClass' => ProductType::className(), 'targetAttribute' => ['idType' => 'id']],
         ];
     }
@@ -55,6 +57,7 @@ class Product extends Base
             'idWarehouse' => Yii::t('app', 'Warehouse'),
             'max' => Yii::t('app', 'Max'),
             'min' => Yii::t('app', 'Min'),
+            'quantity' => Yii::t('app', 'Quantity'),
             'name' => Yii::t('app', 'Name'),
             'sku' => Yii::t('app', 'Sku'),
             'barcode' => Yii::t('app', 'Barcode'),

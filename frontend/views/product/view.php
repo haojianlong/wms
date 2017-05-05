@@ -29,12 +29,29 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'idType',
-            'idWarehouse',
-            'max',
-            'min',
             'name',
             'sku',
+            'quantity',
+            [
+                'label' => 'Supertype',
+                'value' => function($model){
+                    return $model->type->parent->name;
+                },
+            ],
+            [
+                'label' => 'Subtype',
+                'value' => function($model){
+                    return $model->type->name;
+                },
+            ],
+            [
+                'attribute' => 'idWarehouse',
+                'value' => function($model){
+                    return $model->warehouse->name;
+                },
+            ],
+            'max',
+            'min',
             'barcode',
             'remark',
             'createdAt',
