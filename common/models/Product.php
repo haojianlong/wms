@@ -25,6 +25,7 @@ use Yii;
  */
 class Product extends \common\models\base\Product
 {
+    use base\traits\ArrayName;
     /**
      * @return \yii\db\ActiveQuery
      */

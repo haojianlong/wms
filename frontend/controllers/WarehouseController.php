@@ -5,30 +5,13 @@ namespace frontend\controllers;
 use Yii;
 use common\models\Warehouse;
 use common\models\search\Warehouse as WarehouseSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * WarehouseController implements the CRUD actions for Warehouse model.
  */
 class WarehouseController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Lists all Warehouse models.
      * @return mixed

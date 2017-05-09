@@ -19,40 +19,6 @@ use Yii;
 class Role extends \common\models\base\Role
 {
     /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'role';
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],
-            [['name', 'role'], 'string', 'max' => 255],
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => Yii::t('app', 'ID'),
-            'name' => Yii::t('app', 'Name'),
-            'role' => Yii::t('app', 'Role'),
-            'createdAt' => Yii::t('app', 'Created At'),
-            'updatedAt' => Yii::t('app', 'Updated At'),
-            'deletedAt' => Yii::t('app', 'Delete At'),
-        ];
-    }
-
-    /**
      * @return \yii\db\ActiveQuery
      */
     public function getUsers()

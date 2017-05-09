@@ -3,7 +3,6 @@
 namespace common\models;
 
 use Yii;
-use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "warehouse_type".
@@ -19,14 +18,7 @@ use yii\helpers\ArrayHelper;
  */
 class WarehouseType extends \common\models\base\WarehouseType
 {
-
-    /**
-     * @return array $names
-     */
-    public static function getNames()
-    {
-        return ArrayHelper::map(self::find()->asArray()->all(),'id', 'name');
-    }
+    use base\traits\ArrayName;
 
     /**
      * @return \yii\db\ActiveQuery

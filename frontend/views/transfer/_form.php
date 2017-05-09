@@ -18,6 +18,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'quantity')->textInput() ?>
 
+    <?= $form->field($model, 'date')->textInput() ?>
+
     <?= $form->field($model, 'note')->textInput(['maxlength' => true]) ?>
 
 

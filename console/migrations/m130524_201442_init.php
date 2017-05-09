@@ -125,7 +125,7 @@ class m130524_201442_init extends Migration
             'idWarehouse' => $this->integer()->notNull(),
             'date' => Schema::TYPE_DATETIME . ' NOT NULL DEFAULT CURRENT_TIMESTAMP',
             'type' => $this->smallInteger()->notNull(),
-            'quantity' => $this->decimal(18, 5)->unsigned()->notNull()->defaultValue(0),
+            'quantity' => $this->integer(11)->notNull()->defaultValue(0),
             'price' => $this->decimal(18, 5)->unsigned()->notNull()->defaultValue(0),
             'note' => $this->string(255),
         ], $default), $tableOptions);

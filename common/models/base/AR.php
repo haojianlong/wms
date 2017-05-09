@@ -14,6 +14,7 @@ use Yii;
  * @property int $idWarehouse
  * @property string $date
  * @property int $type
+ * @property boolean $isTransfer
  * @property string $quantity
  * @property string $price
  * @property string $note
@@ -37,11 +38,12 @@ class AR extends Base
     public function rules()
     {
         return [
-            [['idUser', 'idCompany', 'idProduct', 'idWarehouse', 'type'], 'required'],
-            [['idUser', 'idCompany', 'idProduct', 'idWarehouse', 'type'], 'integer'],
+            [['idCompany', 'idProduct', 'type', 'quantity'], 'required'],
+            [['quantity', 'idUser', 'idCompany', 'idProduct', 'idWarehouse', 'type'], 'integer'],
             [['date', 'createdAt', 'updatedAt', 'deletedAt'], 'safe'],
-            [['quantity', 'price'], 'number'],
+            [['price'], 'number'],
             [['note'], 'string', 'max' => 255],
+            [['isTransfer'], 'boolean', 'trueValue' => true, 'falseValue' => false]
         ];
     }
 
@@ -52,10 +54,10 @@ class AR extends Base
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'idUser' => Yii::t('app', 'Id User'),
-            'idCompany' => Yii::t('app', 'Id Company'),
-            'idProduct' => Yii::t('app', 'Id Product'),
-            'idWarehouse' => Yii::t('app', 'Id Warehouse'),
+            'idUser' => Yii::t('app', 'User'),
+            'idCompany' => Yii::t('app', 'Company'),
+            'idProduct' => Yii::t('app', 'Product'),
+            'idWarehouse' => Yii::t('app', 'Warehouse'),
             'date' => Yii::t('app', 'Date'),
             'type' => Yii::t('app', 'Type'),
             'quantity' => Yii::t('app', 'Quantity'),

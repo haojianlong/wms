@@ -13,57 +13,89 @@ use Yii;
  * @property int $idProduct
  * @property int $idWarehouse
  * @property string $date
- * @property int $type
+ * @property boolean $isTransfer
  * @property string $quantity
  * @property string $price
  * @property string $note
+ * @property int $type
  * @property string $createdAt
  * @property string $updatedAt
  * @property string $deletedAt
+ *
+ * @property Product $product
+ * @property User $user
+ * @property Company $company
+ * @property Warehouse $warehouse
  */
 class AR extends \common\models\base\AR
 {
-    /**
-     * @inheritdoc
-     */
-    public static function tableName()
-    {
-        return 'ar';
-    }
+    const ENTRY = 1;
+    const DISCHARGE = 2;
+
+    public static $type = [
+        self::ENTRY => 'Warehouse Entry',
+        self::DISCHARGE => 'Warehouse Discharge',
+    ];
 
     /**
-     * @inheritdoc
+     * @return array the validation rules.
      */
     public function rules()
     {
-        return [
-            [['idUser', 'idCompany', 'idProduct', 'idWarehouse', 'type'], 'required'],
-            [['idUser', 'idCompany', 'idProduct', 'idWarehouse', 'type'], 'integer'],
-            [['date', 'createdAt', 'updatedAt', 'deletedAt'], 'safe'],
-            [['quantity', 'price'], 'number'],
-            [['note'], 'string', 'max' => 255],
-        ];
+        return array_merge(parent::rules(), [
+            ['quantity', 'limitQuantity'],
+            ['idUser', 'default', 'value' => Yii::$app->user->id],
+            ['idWarehouse', 'default', 'value' => function($model){
+                return $model->product->idWarehouse;
+            }],
+        ]);
+    }
+
+    public function limitQuantity($attribute, $params)
+    {
+        if ($this->type == self::ENTRY) {
+            $quantity = $this->quantity + $this->product->quantity;
+            if ($quantity > $this->product->max) {
+                $this->addError($attribute, $this->product->min.'-'.$this->product->max);
+            }
+        } elseif ($this->type == self::DISCHARGE) {
+            $quantity = $this->product->quantity - $this->quantity;
+            if ($quantity < $this->product->min) {
+                $this->addError($attribute, $this->product->min.'-'.$this->product->max);
+            }
+        }
     }
 
     /**
-     * @inheritdoc
+     * @return \yii\db\ActiveQuery
      */
-    public function attributeLabels()
+    public function getWarehouse()
     {
-        return [
-            'id' => Yii::t('app', 'ID'),
-            'idUser' => Yii::t('app', 'Id User'),
-            'idCompany' => Yii::t('app', 'Id Company'),
-            'idProduct' => Yii::t('app', 'Id Product'),
-            'idWarehouse' => Yii::t('app', 'Id Warehouse'),
-            'date' => Yii::t('app', 'Date'),
-            'type' => Yii::t('app', 'Type'),
-            'quantity' => Yii::t('app', 'Quantity'),
-            'price' => Yii::t('app', 'Price'),
-            'note' => Yii::t('app', 'Note'),
-            'createdAt' => Yii::t('app', 'Created At'),
-            'updatedAt' => Yii::t('app', 'Updated At'),
-            'deletedAt' => Yii::t('app', 'Delete At'),
-        ];
+        return $this->hasOne(Warehouse::className(), ['id' => 'idWarehouse']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+
+    public function getCompany()
+    {
+        return $this->hasOne(Company::className(), ['id' => 'idCompany']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProduct()
+    {
+        return $this->hasOne(Product::className(), ['id' => 'idProduct']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'idUser']);
     }
 }

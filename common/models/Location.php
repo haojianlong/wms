@@ -3,7 +3,6 @@
 namespace common\models;
 
 use Yii;
-use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "location".
@@ -22,6 +21,8 @@ use yii\helpers\ArrayHelper;
  */
 class Location extends \common\models\base\Location
 {
+    use base\traits\ArrayName;
+
     const STATUS_CLOSED = 0;
     const STATUS_ACTIVE = 1;
 
@@ -39,14 +40,6 @@ class Location extends \common\models\base\Location
     public function getWarehouses()
     {
         return $this->hasMany(Warehouse::className(), ['idLocation' => 'id']);
-    }
-
-     /**
-     * @return array $names
-     */
-    public static function getNames()
-    {
-        return ArrayHelper::map(self::find()->asArray()->all(),'id', 'name');
     }
 
 }

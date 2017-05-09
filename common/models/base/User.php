@@ -22,15 +22,9 @@ use yii\web\IdentityInterface;
  * @property string $createdAt
  * @property string $updatedAt
  * @property string $deletedAt
- *
- * @property Role $role
  */
 class User extends Base
 {
-
-	const STATUS_DELETED = 0;
-	const STATUS_ACTIVE = 1;
-
 	/**
 	 * @inheritdoc
 	 */
@@ -42,12 +36,6 @@ class User extends Base
 	/**
 	 * @inheritdoc
 	 */
-	// public function behaviors()
-	// {
-	// 	return [
-	// 		TimestampBehavior::className(),
-	// 	];
-	// }
 	public function behaviors()
 	{
 		return [
@@ -83,7 +71,7 @@ class User extends Base
 	{
 		return [
 			'id' => Yii::t('app', 'ID'),
-			'idRole' => Yii::t('app', 'Id Role'),
+			'idRole' => Yii::t('app', 'Role'),
 			'username' => Yii::t('app', 'Username'),
 			'auth_key' => Yii::t('app', 'Auth Key'),
 			'password_hash' => Yii::t('app', 'Password Hash'),

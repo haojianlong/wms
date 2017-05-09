@@ -2,6 +2,10 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\widgets\Select2;
+use kartik\date\DatePicker;
+use common\models\Company;
+use common\models\Product;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\AR */
@@ -12,21 +16,25 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'idUser')->textInput() ?>
+    <?=$form->field($model, 'idCompany')->widget(Select2::classname(), ['data' => Company::getNames()]);?>
 
-    <?= $form->field($model, 'idCompany')->textInput() ?>
+    <?=$form->field($model, 'idProduct')->widget(Select2::classname(), ['data' => Product::getNames()]);?>
 
-    <?= $form->field($model, 'idProduct')->textInput() ?>
+    <?=$form->field($model, 'type')->widget(Select2::classname(), ['data' => $model::$type]);?>
 
-    <?= $form->field($model, 'idWarehouse')->textInput() ?>
-
-    <?= $form->field($model, 'date')->textInput() ?>
-
-    <?= $form->field($model, 'type')->textInput() ?>
+    <?=$form->field($model, 'date')->widget(DatePicker::classname(), [
+        'options' => [
+            'value' => date('Y-m-d')
+        ],
+        'pluginOptions' => [
+            'format' => 'yyyy-mm-dd',
+            'todayHighlight' => true
+        ]
+    ]);?>
 
     <?= $form->field($model, 'quantity')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
+  <!--   <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?> -->
 
     <?= $form->field($model, 'note')->textInput(['maxlength' => true]) ?>
 

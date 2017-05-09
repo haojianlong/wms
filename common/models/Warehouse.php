@@ -3,7 +3,6 @@
 namespace common\models;
 
 use Yii;
-use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "warehouse".
@@ -26,6 +25,8 @@ use yii\helpers\ArrayHelper;
  */
 class Warehouse extends \common\models\base\Warehouse
 {
+    use base\traits\ArrayName;
+
     const STATUS_CLOSED = 0;
     const STATUS_ACTIVE = 1;
 
@@ -53,11 +54,4 @@ class Warehouse extends \common\models\base\Warehouse
         return $this->hasOne(WarehouseType::className(), ['id' => 'idType']);
     }
 
-    /**
-     * @return array $names
-     */
-    public static function getNames()
-    {
-        return ArrayHelper::map(self::find()->asArray()->all(),'id', 'name');
-    }
 }

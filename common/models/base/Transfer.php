@@ -12,6 +12,7 @@ use Yii;
  * @property int $idArInto
  * @property int $quantity
  * @property string $note
+ * @property string $date
  * @property string $createdAt
  * @property string $updatedAt
  * @property string $deletedAt
@@ -34,7 +35,7 @@ class Transfer extends Base
         return [
             [['idArOut', 'idArInto', 'quantity'], 'required'],
             [['idArOut', 'idArInto', 'quantity'], 'integer'],
-            [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],
+            [['date', 'createdAt', 'updatedAt', 'deletedAt'], 'safe'],
             [['note'], 'string', 'max' => 255],
         ];
     }
@@ -46,8 +47,9 @@ class Transfer extends Base
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'idArOut' => Yii::t('app', 'Id Ar Out'),
-            'idArInto' => Yii::t('app', 'Id Ar Into'),
+            'idArOut' => Yii::t('app', 'Out From'),
+            'idArInto' => Yii::t('app', 'Into'),
+            'date' => Yii::t('app', 'Date'),
             'quantity' => Yii::t('app', 'Quantity'),
             'note' => Yii::t('app', 'Note'),
             'createdAt' => Yii::t('app', 'Created At'),

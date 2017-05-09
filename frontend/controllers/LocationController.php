@@ -5,30 +5,13 @@ namespace frontend\controllers;
 use Yii;
 use common\models\Location;
 use common\models\search\Location as LocationSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * LocationController implements the CRUD actions for Location model.
  */
 class LocationController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Lists all Location models.
      * @return mixed

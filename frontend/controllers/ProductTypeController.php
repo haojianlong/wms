@@ -5,9 +5,7 @@ namespace frontend\controllers;
 use Yii;
 use common\models\ProductType;
 use common\models\search\ProductType as ProductTypeSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 use yii\helpers\Json;
 
 /**
@@ -15,21 +13,6 @@ use yii\helpers\Json;
  */
 class ProductTypeController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Lists all ProductType models.
      * @return mixed

@@ -5,30 +5,14 @@ namespace frontend\controllers;
 use Yii;
 use common\models\AR;
 use common\models\search\AR as ARSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
+
 
 /**
  * ARController implements the CRUD actions for AR model.
  */
 class ARController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Lists all AR models.
      * @return mixed

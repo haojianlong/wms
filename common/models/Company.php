@@ -29,6 +29,8 @@ use Yii;
  */
 class Company extends \common\models\base\Company
 {
+	use base\traits\ArrayName;
+
     /**
      * @return \yii\db\ActiveQuery
      */

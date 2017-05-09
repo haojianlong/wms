@@ -3,7 +3,6 @@
 namespace common\models;
 
 use Yii;
-use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "company_type".
@@ -19,6 +18,8 @@ use yii\helpers\ArrayHelper;
  */
 class CompanyType extends \common\models\base\CompanyType
 {
+    use base\traits\ArrayName;
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -27,11 +28,4 @@ class CompanyType extends \common\models\base\CompanyType
         return $this->hasMany(Company::className(), ['idType' => 'id']);
     }
 
-    /**
-     * @return array $names
-     */
-    public static function getNames()
-    {
-        return ArrayHelper::map(self::find()->asArray()->all(),'id', 'name');
-    }
 }

@@ -5,30 +5,13 @@ namespace frontend\controllers;
 use Yii;
 use common\models\Role;
 use common\models\search\Role as RoleSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * RoleController implements the CRUD actions for Role model.
  */
 class RoleController extends Controller
 {
-    /**
-     * @inheritdoc
-     */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
-
     /**
      * Lists all Role models.
      * @return mixed
