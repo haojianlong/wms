@@ -26,13 +26,38 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'idUser',
-            'idCompany',
-            'idProduct',
-            'idWarehouse',
-            // 'date',
-            // 'type',
-            // 'quantity',
+            // [
+            //     'attribute' => 'idUser',
+            //     'value' => function($model){
+            //         return $model->user->username;
+            //     },
+            // ],
+            // [
+            //     'attribute' => 'idCompany',
+            //     'value' => function($model){
+            //         return $model->company->name;
+            //     },
+            // ],
+            [
+                'attribute' => 'idProduct',
+                'value' => function($model){
+                    return $model->product->name;
+                },
+            ],
+            [
+                'attribute' => 'idWarehouse',
+                'value' => function($model){
+                    return $model->warehouse->name;
+                },
+            ],
+            'date',
+            [
+                'attribute' => 'type',
+                'value' => function($model){
+                    return Yii::t('app', $model::$type[$model->type]);
+                },
+            ],
+            'quantity',
             // 'price',
             // 'note',
             // 'createdAt',

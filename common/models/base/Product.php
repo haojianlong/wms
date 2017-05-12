@@ -42,6 +42,7 @@ class Product extends Base
             [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],
             [['name', 'sku', 'barcode', 'remark'], 'string', 'max' => 255],
             ['min', 'compare', 'type'=> 'number', 'compareAttribute' =>'max', 'operator' => '<'],
+            ['quantity', 'compare', 'type'=> 'number', 'compareAttribute' =>'max', 'operator' => '<='],
             [['idType'], 'exist', 'skipOnError' => true, 'targetClass' => ProductType::className(), 'targetAttribute' => ['idType' => 'id']],
         ];
     }

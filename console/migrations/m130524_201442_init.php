@@ -107,6 +107,7 @@ class m130524_201442_init extends Migration
             'id' => $this->primaryKey(),
             'idType' => $this->integer()->notNull(),
             'idWarehouse' => $this->integer()->notNull(),
+            'quantity' => $this->integer(11)->notNull()->defaultValue(0),
             'max' => $this->integer()->notNull(),
             'min' => $this->integer()->notNull()->defaultValue(0),
             'name' => $this->string(255)->notNull(),
@@ -123,6 +124,7 @@ class m130524_201442_init extends Migration
             'idCompany' => $this->integer()->notNull(),
             'idProduct' => $this->integer()->notNull(),
             'idWarehouse' => $this->integer()->notNull(),
+            'isTransfer' => $this->smallInteger(1)->notNull()->defaultValue(0),
             'date' => Schema::TYPE_DATETIME . ' NOT NULL DEFAULT CURRENT_TIMESTAMP',
             'type' => $this->smallInteger()->notNull(),
             'quantity' => $this->integer(11)->notNull()->defaultValue(0),
@@ -136,6 +138,7 @@ class m130524_201442_init extends Migration
             'idArOut' => $this->integer()->notNull(),
             'idArInto' => $this->integer()->notNull(),
             'quantity' => $this->integer()->notNull(),
+            'date' => Schema::TYPE_DATETIME . ' NOT NULL DEFAULT CURRENT_TIMESTAMP',
             'note' => $this->string(255),
         ], $default), $tableOptions);
 

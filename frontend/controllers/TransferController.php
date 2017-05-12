@@ -4,14 +4,37 @@ namespace frontend\controllers;
 
 use Yii;
 use common\models\Transfer;
+use common\models\Product;
 use common\models\search\Transfer as TransferSearch;
 use yii\web\NotFoundHttpException;
+use yii\web\BadRequestHttpException;
 
 /**
  * TransferController implements the CRUD actions for Transfer model.
  */
 class TransferController extends Controller
 {
+    public $idProduct;
+
+    public $product;
+    /**
+     * @inheritdoc
+     */
+    public function beforeAction($action)
+    {
+        if (!in_array($action->id, ['index'])) {
+            $idProduct = (int)Yii::$app->request->get('idProduct');
+            if (!$idProduct) {
+                throw new BadRequestHttpException("Missing required parameters: idProduct.");
+            }
+            $this->product = Product::findOne($idProduct);
+            if (!($this->product instanceof Product)) {
+                throw new BadRequestHttpException("Server internal error.");
+            }
+        }
+        return parent::beforeAction($action);
+    }
+
     /**
      * Lists all Transfer models.
      * @return mixed

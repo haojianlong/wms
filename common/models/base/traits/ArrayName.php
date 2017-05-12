@@ -9,8 +9,8 @@ trait ArrayName
     /**
      * @return array $names
      */
-    public static function getNames()
+    public static function getNames($condition = [])
     {
-        return ArrayHelper::map(self::find()->asArray()->all(),'id', 'name');
+        return ArrayHelper::map(self::find()->where($condition)->asArray()->all(),'id', 'name');
     }
 }

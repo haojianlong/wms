@@ -2,6 +2,9 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\widgets\Select2;
+use kartik\date\DatePicker;
+use common\models\Product;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Transfer */
@@ -12,13 +15,21 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'idArOut')->textInput() ?>
+    <?=$form->field($model, 'idArOut')->widget(Select2::classname(), ['data' => Product::getNames()]);?>
 
     <?= $form->field($model, 'idArInto')->textInput() ?>
 
     <?= $form->field($model, 'quantity')->textInput() ?>
 
-    <?= $form->field($model, 'date')->textInput() ?>
+    <?=$form->field($model, 'date')->widget(DatePicker::classname(), [
+        'options' => [
+            'value' => date('Y-m-d')
+        ],
+        'pluginOptions' => [
+            'format' => 'yyyy-mm-dd',
+            'todayHighlight' => true
+        ]
+    ]);?>
 
     <?= $form->field($model, 'note')->textInput(['maxlength' => true]) ?>
 

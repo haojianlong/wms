@@ -44,7 +44,17 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'updatedAt',
             // 'deletedAt',
 
-            ['class' => 'yii\grid\ActionColumn'],
+                        [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{Transfer}{view}{update}{delete}',
+                'header' => 'Action',
+                'buttons' => [
+              
+                    'Transfer' => function($url, $model){
+                        return Html::a('Transfer', ['transfer/create', 'idProduct' => $model->id], ['class' => 'glyphicon glyphicon-pencil']);
+                    },
+                ]
+            ],
         ],
     ]); ?>
 </div>
