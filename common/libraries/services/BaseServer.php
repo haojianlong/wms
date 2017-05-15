@@ -13,7 +13,7 @@ class BaseServer
      * new static()
      * @var $_server
      */
-    private static $_server;
+    // private $_server;
 
     /**
      * \yii\db\ActiveRecord
@@ -37,11 +37,11 @@ class BaseServer
             return null;
         }
 
-        if (self::$_server) {
-            return self::$_server;
-        }
+        // if (self::$_server) {
+        //     return self::$_server;
+        // }
 
-        return self::$_server = new static($model);
+        return new static($model);
     }
 
     /**

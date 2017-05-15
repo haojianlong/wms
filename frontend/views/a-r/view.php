@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'idCompany',
                 'value' => function($model){
-                    return $model->company->name;
+                    return $model->company ? $model->company->name : '';
                 },
             ],
             [
@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
             'quantity',
-            'price',
+            // 'price',
             'note',
             'createdAt',
             'updatedAt',

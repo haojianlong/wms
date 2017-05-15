@@ -6,6 +6,7 @@ use Yii;
 use yii\web\BadRequestHttpException;
 use yii\web\ServerErrorHttpException;
 use yii\helpers\VarDumper;
+use yii\widgets\ActiveForm;
 
 class ARServer  extends BaseServer
 {
@@ -14,6 +15,9 @@ class ARServer  extends BaseServer
         $model = $this->_model;
         if ($model->id) {
             return false;
+        }
+        if (!$model->validate()) {
+            throw new BadRequestHttpException(VarDumper::export(ActiveForm::validate($model)));
         }
 
         if ($model->type == $model::ENTRY) {
@@ -24,7 +28,7 @@ class ARServer  extends BaseServer
 
         $trans = \Yii::$app->db->beginTransaction();
         try{
-            if (!$model->product->save() || !$model->save()) {
+            if (!$model->save(false) || !$model->product->save()) {
                 throw new \yii\db\Exception(VarDumper::export(array_merge($model->errors,$model->product->errors)));
             }
             $trans->commit();
@@ -38,6 +42,6 @@ class ARServer  extends BaseServer
                 // print_r($e->errorInfo);      //db错误
                 // print_r($e->getMessage());   //yii报错
         }
-
+        return true;
     }
 }

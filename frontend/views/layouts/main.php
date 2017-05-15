@@ -36,7 +36,7 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'AR', 'url' => ['a-r/index']],
+        ['label' => 'AR', 'url' => ['/a-r/index']],
         [
             'label' => 'Company',
             'items' => [

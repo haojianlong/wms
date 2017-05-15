@@ -56,13 +56,16 @@ class AR extends \common\models\base\AR
         if ($this->type == self::ENTRY) {
             $quantity = $this->quantity + $this->product->quantity;
             if ($quantity > $this->product->max) {
-                $this->addError($attribute, $this->product->min.'-'.$this->product->max);
+                $this->addError($attribute, $this->product->min.'d'.$this->product->quantity.'ao '.$this->product->max);
             }
         } elseif ($this->type == self::DISCHARGE) {
             $quantity = $this->product->quantity - $this->quantity;
-            if ($quantity < $this->product->min) {
+            if ($quantity < 0) {
                 $this->addError($attribute, $this->product->min.'-'.$this->product->max);
             }
+            // if ($quantity < $this->product->min) {
+            //     $this->addError($attribute, $this->product->min.'-'.$this->product->max);
+            // }
         }
     }
 

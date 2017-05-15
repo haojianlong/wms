@@ -43,14 +43,15 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'createdAt',
             // 'updatedAt',
             // 'deletedAt',
-
-                        [
+            [
                 'class' => 'yii\grid\ActionColumn',
                 'template' => '{Transfer}{view}{update}{delete}',
                 'header' => 'Action',
                 'buttons' => [
                     'Transfer' => function($url, $model){
-                        return Html::a('Transfer', ['transfer/detail/create', 'idProduct' => $model->id], ['class' => 'glyphicon glyphicon-pencil']);
+                        if ($model->quantity > 0) {
+                            return Html::a('Transfer', ['transfer/detail/create', 'idProduct' => $model->id], ['class' => '']);
+                        }
                     },
                 ]
             ],
