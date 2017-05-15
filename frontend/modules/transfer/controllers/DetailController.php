@@ -1,18 +1,19 @@
 <?php
 
-namespace frontend\controllers;
+namespace frontend\modules\transfer\controllers;
 
 use Yii;
-use common\models\Transfer;
+use frontend\modules\transfer\models\Transfer;
 use common\models\Product;
 use common\models\search\Transfer as TransferSearch;
+use common\libraries\services\TransferServer;
 use yii\web\NotFoundHttpException;
 use yii\web\BadRequestHttpException;
-
+use yii\web\Controller;
 /**
  * TransferController implements the CRUD actions for Transfer model.
  */
-class TransferController extends Controller
+class DetailController extends BaseController
 {
     public $idProduct;
 
@@ -36,21 +37,6 @@ class TransferController extends Controller
     }
 
     /**
-     * Lists all Transfer models.
-     * @return mixed
-     */
-    public function actionIndex()
-    {
-        $searchModel = new TransferSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
-    /**
      * Displays a single Transfer model.
      * @param integer $id
      * @return mixed
@@ -71,10 +57,15 @@ class TransferController extends Controller
     {
         $model = new Transfer();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+            $model->idArOut = $this->product->id;
+            $server = TransferServer::getServer($model);
+            $server->operate();
+            exit();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
+                'product' => $this->product,
                 'model' => $model,
             ]);
         }

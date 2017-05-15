@@ -49,9 +49,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 'template' => '{Transfer}{view}{update}{delete}',
                 'header' => 'Action',
                 'buttons' => [
-              
                     'Transfer' => function($url, $model){
-                        return Html::a('Transfer', ['transfer/create', 'idProduct' => $model->id], ['class' => 'glyphicon glyphicon-pencil']);
+                        return Html::a('Transfer', ['transfer/detail/create', 'idProduct' => $model->id], ['class' => 'glyphicon glyphicon-pencil']);
                     },
                 ]
             ],

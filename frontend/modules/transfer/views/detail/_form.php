@@ -5,6 +5,7 @@ use yii\widgets\ActiveForm;
 use kartik\widgets\Select2;
 use kartik\date\DatePicker;
 use common\models\Product;
+use common\models\Warehouse;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Transfer */
@@ -15,9 +16,12 @@ use common\models\Product;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?=$form->field($model, 'idArOut')->widget(Select2::classname(), ['data' => Product::getNames()]);?>
+    <?= $form->field($model, 'idArOut')->textInput([
+        'value' => $product->name.'('.$product->quantity.')',
+        'readonly' => 'readonly',
+    ]) ?>
 
-    <?= $form->field($model, 'idArInto')->textInput() ?>
+    <?=$form->field($model, 'idArInto')->widget(Select2::classname(), ['data' => Warehouse::getNames(['<>', 'id', $product->idWarehouse])]);?>
 
     <?= $form->field($model, 'quantity')->textInput() ?>
 

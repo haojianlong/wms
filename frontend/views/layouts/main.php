@@ -60,7 +60,7 @@ AppAsset::register($this);
         ],
         ['label' => 'Location', 'url' => ['/location/index']],
         ['label' => 'Role', 'url' => ['/role/index']],
-        ['label' => 'Transfer', 'url' => ['/transfer/index']],
+        ['label' => 'Transfer', 'url' => ['/transfer/list']],
         ['label' => 'User', 'url' => ['/user/index']],
     ];
     if (Yii::$app->user->isGuest) {
