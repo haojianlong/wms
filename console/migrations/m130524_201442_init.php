@@ -21,17 +21,18 @@ class m130524_201442_init extends Migration
 
         $this->createTable('{{%role}}', array_merge([
             'id' => $this->primaryKey(),
-            'name' => $this->string(255),
-            'role' => $this->string(255),
+            'name' => $this->string(255)->notNull(),
+            'role' => $this->string(255)->notNull()->defaultValue(json_encode([])),
         ], $default), $tableOptions);
-        $this->insert('{{%role}}', [
+        (new \common\models\Role([
+            'name' => 'amdin',
+            'role' => json_encode(array_keys(\common\models\Role::$roles))
+            ]))->save();
+        (new \common\models\Role([
             'name' => 'default',
-            'role' => json_encode([]),
-        ]);
-        $this->insert('{{%role}}', [
-            'name' => 'admin',
-            'role' => json_encode([]),
-        ]);
+            'role' => json_encode([])
+            ]))->save();
+
         $this->createTable('{{%user}}', array_merge([
             'id' => $this->primaryKey(),
             'idRole' => $this->integer()->notNull()->defaultValue(1),

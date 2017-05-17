@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Json;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
@@ -27,7 +28,20 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'name',
-            'role',
+            [
+                'attribute' => 'role',
+                'value' => function($model){
+                    $roles = Json::decode($model->role);
+                    $allRole = $model::$roles;
+                    $data = '';
+                    foreach ($roles as $role) {
+                        if (isset($allRole[$role])) {
+                            $data .= $allRole[$role].'; ';
+                        }
+                    }
+                    return substr($data, 0, -2);
+                },
+            ],
             'createdAt',
             'updatedAt',
             // 'deletedAt',
