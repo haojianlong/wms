@@ -13,6 +13,8 @@ use yii\helpers\Json;
  */
 class ProductTypeController extends Controller
 {
+    public $role = 'Product';
+
     /**
      * Lists all ProductType models.
      * @return mixed

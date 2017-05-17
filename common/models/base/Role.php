@@ -32,8 +32,9 @@ class Role extends Base
     public function rules()
     {
         return [
+            [['name', 'role'], 'required'],
             [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],
-            [['name', 'role'], 'string', 'max' => 255],
+            [['name'], 'string', 'max' => 255],
         ];
     }
 

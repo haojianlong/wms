@@ -12,6 +12,8 @@ use yii\web\NotFoundHttpException;
  */
 class WarehouseTypeController extends Controller
 {
+    public $role = 'Warehouse';
+
     /**
      * Lists all WarehouseType models.
      * @return mixed

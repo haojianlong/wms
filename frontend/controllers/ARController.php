@@ -14,6 +14,8 @@ use yii\web\NotFoundHttpException;
  */
 class ARController extends Controller
 {
+    public $role = 'AR';
+
     /**
      * Lists all AR models.
      * @return mixed

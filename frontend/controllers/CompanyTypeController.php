@@ -12,6 +12,8 @@ use yii\web\NotFoundHttpException;
  */
 class CompanyTypeController extends Controller
 {
+    public $role = 'Company';
+
     /**
      * Lists all CompanyType models.
      * @return mixed

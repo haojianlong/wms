@@ -9,5 +9,5 @@ use frontend\controllers\Controller;
  */
 class BaseController extends Controller
 {
-
+	public $role = 'Transfer';
 }

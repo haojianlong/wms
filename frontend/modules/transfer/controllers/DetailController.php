@@ -10,6 +10,7 @@ use common\libraries\services\TransferServer;
 use yii\web\NotFoundHttpException;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
+
 /**
  * TransferController implements the CRUD actions for Transfer model.
  */
@@ -18,6 +19,7 @@ class DetailController extends BaseController
     public $idProduct;
 
     public $product;
+
     /**
      * @inheritdoc
      */

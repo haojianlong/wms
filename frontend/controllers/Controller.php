@@ -3,9 +3,10 @@
 namespace frontend\controllers;
 
 use Yii;
-use yii\web\NotFoundHttpException;
+use yii\web\ForbiddenHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use common\models\Role;
 
 /**
  * ARController implements the CRUD actions for AR model.
@@ -38,6 +39,18 @@ class Controller extends \yii\web\Controller
                 ],
             ],
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeAction($action)
+    {
+        $role = json_decode(Yii::$app->user->identity->role->role);
+        if (!in_array(array_search($this->role, Role::$roles), $role)) {
+            throw new ForbiddenHttpException("Error Processing Request", 403);
+        }
+        return parent::beforeAction($action);
     }
 
 

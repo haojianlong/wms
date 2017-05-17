@@ -13,6 +13,8 @@ use yii\web\NotFoundHttpException;
  */
 class ProductController extends Controller
 {
+    public $role = 'Product';
+
     /**
      * Lists all Product models.
      * @return mixed

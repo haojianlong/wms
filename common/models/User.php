@@ -37,7 +37,8 @@ class User extends \common\models\base\User implements IdentityInterface
 	{
 		return $this->hasOne(Role::className(), ['id' => 'idRole']);
 	}
-  /**
+
+    /**
      * @inheritdoc
      */
     public static function findIdentity($id)

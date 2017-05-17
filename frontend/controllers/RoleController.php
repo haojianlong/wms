@@ -12,6 +12,8 @@ use yii\web\NotFoundHttpException;
  */
 class RoleController extends Controller
 {
+    public $role = 'Role';
+
     /**
      * Lists all Role models.
      * @return mixed

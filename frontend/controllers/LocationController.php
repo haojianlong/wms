@@ -12,6 +12,8 @@ use yii\web\NotFoundHttpException;
  */
 class LocationController extends Controller
 {
+    public $role = 'Location';
+
     /**
      * Lists all Location models.
      * @return mixed

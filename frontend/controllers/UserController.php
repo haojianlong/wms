@@ -12,6 +12,8 @@ use yii\web\NotFoundHttpException;
  */
 class UserController extends Controller
 {
+    public $role = 'User';
+
     /**
      * Lists all User models.
      * @return mixed
