@@ -46,12 +46,12 @@ class Controller extends \yii\web\Controller
      */
     public function beforeAction($action)
     {
-        $role = json_decode(Yii::$app->user->identity->role->role);
-        if (!in_array(array_search($this->role, Role::$roles), $role)) {
-            throw new ForbiddenHttpException("Error Processing Request", 403);
+        if (!Yii::$app->user->isGuest) {
+            $role = json_decode(Yii::$app->user->identity->role->role);
+            if (!in_array(array_search($this->role, Role::$roles), $role)) {
+                throw new ForbiddenHttpException("Error Processing Request", 403);
+            }
         }
         return parent::beforeAction($action);
     }
-
-
 }

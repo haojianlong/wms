@@ -15,6 +15,17 @@ class UserController extends Controller
     public $role = 'User';
 
     /**
+     * @inheritdoc
+     */
+    public function beforeAction($action)
+    {
+        if (Yii::$app->request->get('id') == 1) {
+            return $this->redirect('index')->send();
+        }
+        return parent::beforeAction($action);
+    }
+
+    /**
      * Lists all User models.
      * @return mixed
      */
@@ -46,18 +57,18 @@ class UserController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
-        $model = new User();
+    // public function actionCreate()
+    // {
+    //     $model = new User();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
-    }
+    //     if ($model->load(Yii::$app->request->post()) && $model->save()) {
+    //         return $this->redirect(['view', 'id' => $model->id]);
+    //     } else {
+    //         return $this->render('create', [
+    //             'model' => $model,
+    //         ]);
+    //     }
+    // }
 
     /**
      * Updates an existing User model.
@@ -67,6 +78,7 @@ class UserController extends Controller
      */
     public function actionUpdate($id)
     {
+        return $this->redirect('index');
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -86,6 +98,8 @@ class UserController extends Controller
      */
     public function actionDelete($id)
     {
+        echo "string";
+        exit;
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);

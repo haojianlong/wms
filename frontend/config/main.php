@@ -12,6 +12,7 @@ return [
     'bootstrap' => ['log'],
     'language' => 'zh-CN',
     'controllerNamespace' => 'frontend\controllers',
+    'defaultRoute'=>'a-r/index',
     'modules' => [
         'transfer' => [
             'class' => 'frontend\modules\transfer\Module',

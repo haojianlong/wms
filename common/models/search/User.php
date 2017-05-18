@@ -41,7 +41,7 @@ class User extends UserModel
      */
     public function search($params)
     {
-        $query = UserModel::find();
+        $query = UserModel::find()->where(['<>', 'id', 1]);
 
         // add conditions that should always apply here
 

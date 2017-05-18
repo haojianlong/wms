@@ -67,6 +67,9 @@ class RoleController extends Controller
      */
     public function actionUpdate($id)
     {
+        if ($id == 1) {
+            return $this->redirect('index');
+        }
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

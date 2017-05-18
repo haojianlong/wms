@@ -30,6 +30,25 @@ class User extends \common\models\base\User implements IdentityInterface
 	const STATUS_DELETED = 0;
 	const STATUS_ACTIVE = 1;
 
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            if ($this->isNewRecord) {
+                if (self::find()->count() == 0) {
+                    $this->idRole = 1;
+                } else {
+                    $this->idRole = 2;
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 	/**
 	 * @return \yii\db\ActiveQuery
 	 */

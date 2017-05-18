@@ -16,7 +16,10 @@ use yii\widgets\ActiveForm;
 
 
 
-    <?= $form->field($model, 'role')->checkboxList($model::$roles) ?>
+    <?= $form->field($model, 'role')->checkboxList($model::$roles, [
+    		'value' => json_decode($model->role),
+    	])
+    ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-primary']) ?>
