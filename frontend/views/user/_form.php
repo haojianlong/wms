@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\widgets\Select2;
+use common\models\Role;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
@@ -12,9 +14,10 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'idRole')->textInput() ?>
+    <?=$form->field($model, 'idRole')->widget(Select2::classname(), ['data' => Role::getNames(['<>', 'id', 1])]);?>
 
-    <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
+
+<!--     <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'auth_key')->textInput(['maxlength' => true]) ?>
 
@@ -22,9 +25,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'password_reset_token')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?> -->
+<!-- 
+    <?= $form->field($model, 'status')->textInput() ?> -->
 
 
     <div class="form-group">

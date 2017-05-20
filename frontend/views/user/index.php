@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'deletedAt',
             [
                 'class' => 'yii\grid\ActionColumn',
-                'template' => '{view}',
+                'template' => '{view}{update}',
                 'header' => 'Action',
             ],
         ],
