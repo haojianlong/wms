@@ -18,7 +18,7 @@ trait SoftDeleteable
         if (!$this->canDelete()) {
             return false;
         }
-        $this->deletedAt = time();
+        $this->deletedAt = date('Y-m-d H:i:s');
         $this->save();
         return true;
     }
