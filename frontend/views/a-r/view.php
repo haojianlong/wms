@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use common\models\Company;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\AR */
@@ -38,7 +39,8 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'idCompany',
                 'value' => function($model){
-                    return $model->company ? $model->company->name : '';
+                    $company = Company::find(false)->where(['id' => $model->idCompany])->one();
+                    return $company ? $company->name : '';
                 },
             ],
             [

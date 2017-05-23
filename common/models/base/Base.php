@@ -12,6 +12,7 @@ use Yii;
 class Base extends \common\libraries\db\ActiveRecord
 {
     use traits\DbDefault;
+    use traits\SoftDeleteable;
 
     /**
      * @inheritdoc
@@ -41,19 +42,12 @@ class Base extends \common\libraries\db\ActiveRecord
     {
         $deletedAt = static::tableName() . '.deletedAt';
         $parent = parent::find();
-        switch ($isDeleted) {
-            case null:
-                $parent->andWhere([$deletedAt => null]);
-                break;
-            case true:
-                $parent->andWhere(['>', $deletedAt, 0]);
-                break;
-            case false:
-                //all
-                break;
-            default:
-                $parent = null;
-                break;
+        if ($isDeleted === false) {
+
+        } elseif ($isDeleted === true) {
+            $parent->andWhere(['>', $deletedAt, 0]);
+        } else {
+            $parent->andWhere([$deletedAt => null]);
         }
         return $parent;
     }

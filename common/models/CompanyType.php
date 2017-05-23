@@ -20,6 +20,10 @@ class CompanyType extends \common\models\base\CompanyType
 {
     use base\traits\ArrayName;
 
+    protected $touches = [
+    	'companies'
+    ];
+
     /**
      * @return \yii\db\ActiveQuery
      */

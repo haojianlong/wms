@@ -28,7 +28,20 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'createdAt',
             'updatedAt',
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view}{update}{delete}',
+                'header' => 'Action',
+                'buttons' => [
+                    'delete' => function($url, $model){
+                            if ($model->canDelete()) {
+                                return Html::a('', $url, ['class' => 'glyphicon glyphicon-trash']);
+                            } else {
+                                return '';
+                            }
+                    },
+                ]
+            ],
         ],
     ]); ?>
 </div>

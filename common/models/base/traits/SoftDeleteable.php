@@ -1,34 +1,40 @@
 <?php
 
-namespace common\models\traits;
+namespace common\models\base\traits;
 
 use yii\db\ActiveQuery;
 
 trait SoftDeleteable
 {
-    /**
-     * @return void
-     */
-    public function setDeletedAt($time = null)
-    {
-        $this->deletedAt = isset($time) ? intval($time) : time();
-    }
+    protected $touches = [
+
+    ];
 
     /**
-     * Add a default condition according the param.
-     *
-     * @param null|boolean $onlyDeleted null -> not deleted, true -> deleted, false -> all
-     * @return ActiveQuery
+     * @return bool
      */
-    public static function find($onlyDeleted = null)
+    public function delete()
     {
-        $deletedAt = static::tableName() . '.deletedAt';
-        if (is_null($onlyDeleted)) {
-            return parent::find()->where([$deletedAt => 0]);
-        } elseif ($onlyDeleted === true) {
-            return parent::find()->where(['>', $deletedAt, 0]);
-        } elseif ($onlyDeleted === false) {
-            return parent::find();
+        if (!$this->canDelete()) {
+            return false;
         }
+        $this->deletedAt = time();
+        $this->save();
+        return true;
+    }
+
+    public function validateDelete()
+    {
+        //$this->deletedAt = time();
+    }
+
+    public function canDelete()
+    {
+        foreach ($this->touches as $value) {
+            if (count($this->$value)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
