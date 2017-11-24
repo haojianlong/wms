@@ -17,6 +17,9 @@ return [
         'transfer' => [
             'class' => 'frontend\modules\transfer\Module',
         ],
+        'v1' => [
+            'class' => 'frontend\modules\v1\Module',
+        ],
     ],
     'components' => [
         'request' => [
