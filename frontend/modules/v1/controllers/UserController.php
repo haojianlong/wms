@@ -2,6 +2,8 @@
 
 namespace frontend\modules\v1\controllers;
 
+use frontend\modules\v1\models\User;
+
 /**
  * Default controller for the `v1` module
  */
@@ -13,6 +15,6 @@ class UserController extends Controller
      */
     public function actionIndex()
     {
-        return [];
+        return User::find()->all();
     }
 }

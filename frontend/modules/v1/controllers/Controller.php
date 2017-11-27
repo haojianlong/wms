@@ -4,6 +4,9 @@ namespace frontend\modules\v1\controllers;
 
 use Yii;
 use yii\filters\auth\CompositeAuth;
+use yii\filters\auth\HttpBasicAuth;
+use yii\filters\auth\HttpBearerAuth;
+use yii\filters\auth\QueryParamAuth;
 use yii\filters\ContentNegotiator;
 use yii\filters\RateLimiter;
 use yii\filters\VerbFilter;
@@ -55,6 +58,11 @@ class Controller extends \yii\web\Controller
             ],
             'authenticator' => [
                 'class' => CompositeAuth::className(),
+                'authMethods' => [
+                    HttpBasicAuth::className(),
+                    HttpBearerAuth::className(),
+                    QueryParamAuth::className()
+                ]
             ],
             'rateLimiter' => [
                 'class' => RateLimiter::className(),

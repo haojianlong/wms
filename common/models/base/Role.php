@@ -52,12 +52,4 @@ class Role extends Base
             'deletedAt' => Yii::t('app', 'Delete At'),
         ];
     }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getUsers()
-    {
-        return $this->hasMany(User::className(), ['idRole' => 'id']);
-    }
 }
