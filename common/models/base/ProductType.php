@@ -30,6 +30,7 @@ class ProductType extends Base
     public function rules()
     {
         return [
+            ['id', 'integer'],
             [['idParent'], 'integer'],
             [['name'], 'required'],
             [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],

@@ -37,6 +37,7 @@ class Product extends Base
     public function rules()
     {
         return [
+            ['id', 'integer'],
             [['idType', 'idWarehouse', 'max', 'name', 'sku', 'barcode'], 'required'],
             [['idType', 'idWarehouse', 'max', 'min', 'quantity'], 'integer'],
             [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],

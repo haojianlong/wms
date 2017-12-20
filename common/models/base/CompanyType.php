@@ -29,6 +29,7 @@ class CompanyType extends Base
     public function rules()
     {
         return [
+            ['id', 'integer'],
             [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],
             [['name'], 'string', 'max' => 255],
         ];

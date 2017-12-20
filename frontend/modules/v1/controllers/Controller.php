@@ -56,14 +56,14 @@ class Controller extends \yii\web\Controller
                 'class' => VerbFilter::className(),
                 'actions' => $this->verbs(),
             ],
-            'authenticator' => [
-                'class' => CompositeAuth::className(),
-                'authMethods' => [
-                    HttpBasicAuth::className(),
-                    HttpBearerAuth::className(),
-                    QueryParamAuth::className()
-                ]
-            ],
+//            'authenticator' => [
+//                'class' => CompositeAuth::className(),
+//                'authMethods' => [
+//                    HttpBasicAuth::className(),
+//                    HttpBearerAuth::className(),
+//                    QueryParamAuth::className()
+//                ]
+//            ],
             'rateLimiter' => [
                 'class' => RateLimiter::className(),
             ],
@@ -78,10 +78,10 @@ class Controller extends \yii\web\Controller
         $result = parent::afterAction($action, $result);
         $data = [
             'status' => 200,
-            'message' => 'success',
-            'data' => $result
+            'message' => '',
+            'data' => $this->serializeData($result)
         ];
-        return $this->serializeData($data);
+        return $data;
     }
 
     /**

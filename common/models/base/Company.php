@@ -41,6 +41,7 @@ class Company extends Base
     public function rules()
     {
         return [
+            ['id', 'integer'],
             [['idType', 'name', 'contact', 'phone', 'fax', 'email', 'bank', 'bankAccount', 'zone', 'address', 'zipcode'], 'required'],
             [['idType'], 'integer'],
             [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],

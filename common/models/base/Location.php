@@ -32,6 +32,7 @@ class Location extends Base
     public function rules()
     {
         return [
+            ['id', 'integer'],
             [['name', 'address'], 'required'],
             [['status'], 'integer'],
             [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],

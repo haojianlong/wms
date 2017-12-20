@@ -33,6 +33,7 @@ class Transfer extends Base
     public function rules()
     {
         return [
+            ['id', 'integer'],
             [['idArOut', 'idArInto', 'quantity'], 'required'],
             [['idArOut', 'idArInto', 'quantity'], 'integer'],
             [['date', 'createdAt', 'updatedAt', 'deletedAt'], 'safe'],

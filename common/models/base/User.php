@@ -35,6 +35,7 @@ class User extends Base
 	public function rules()
 	{
 		return [
+            ['id', 'integer'],
 			[['status'], 'integer'],
 			[['username', 'auth_key', 'password_hash', 'email'], 'required'],
 			[['createdAt', 'updatedAt', 'deletedAt'], 'safe'],
