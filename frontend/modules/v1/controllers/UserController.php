@@ -2,6 +2,7 @@
 
 namespace frontend\modules\v1\controllers;
 
+use frontend\modules\v1\libraries\Controller;
 use frontend\modules\v1\models\User;
 
 /**

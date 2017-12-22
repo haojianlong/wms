@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\modules\v1\controllers;
+namespace frontend\modules\v1\libraries;
 
 use Yii;
 use yii\filters\auth\CompositeAuth;
@@ -56,14 +56,12 @@ class Controller extends \yii\web\Controller
                 'class' => VerbFilter::className(),
                 'actions' => $this->verbs(),
             ],
-//            'authenticator' => [
-//                'class' => CompositeAuth::className(),
-//                'authMethods' => [
-//                    HttpBasicAuth::className(),
-//                    HttpBearerAuth::className(),
-//                    QueryParamAuth::className()
-//                ]
-//            ],
+            'authenticator' => [
+                'class' => CompositeAuth::className(),
+                'authMethods' => [
+                    HttpBasicAuth::className()
+                ]
+            ],
             'rateLimiter' => [
                 'class' => RateLimiter::className(),
             ],
