@@ -35,6 +35,7 @@ class Warehouse extends Base
     public function rules()
     {
         return [
+            ['id', 'integer'],
             [['idType', 'idLocation', 'name', 'code', 'address'], 'required'],
             [['idType', 'idLocation', 'status'], 'integer'],
             [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],

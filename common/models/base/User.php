@@ -3,10 +3,6 @@
 namespace common\models\base;
 
 use Yii;
-use yii\base\NotSupportedException;
-use yii\behaviors\TimestampBehavior;
-use yii\db\ActiveRecord;
-use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "user".
@@ -36,22 +32,10 @@ class User extends Base
 	/**
 	 * @inheritdoc
 	 */
-	public function behaviors()
-	{
-		return [
-			[
-				'class' => TimestampBehavior::className(),
-				'createdAtAttribute' => 'createdAt',
-				'updatedAtAttribute' => 'updatedAt',
-			]
-		];
-	}
-	/**
-	 * @inheritdoc
-	 */
 	public function rules()
 	{
 		return [
+            ['id', 'integer'],
 			[['status'], 'integer'],
 			[['username', 'auth_key', 'password_hash', 'email'], 'required'],
 			[['createdAt', 'updatedAt', 'deletedAt'], 'safe'],

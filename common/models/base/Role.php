@@ -32,6 +32,7 @@ class Role extends Base
     public function rules()
     {
         return [
+            ['id', 'integer'],
             [['name', 'role'], 'required'],
             [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],
             [['name'], 'string', 'max' => 255],
@@ -51,13 +52,5 @@ class Role extends Base
             'updatedAt' => Yii::t('app', 'Updated At'),
             'deletedAt' => Yii::t('app', 'Delete At'),
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getUsers()
-    {
-        return $this->hasMany(User::className(), ['idRole' => 'id']);
     }
 }

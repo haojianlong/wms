@@ -1,9 +1,7 @@
 <?php
 $params = array_merge(
     require(__DIR__ . '/../../common/config/params.php'),
-    require(__DIR__ . '/../../common/config/params-local.php'),
-    require(__DIR__ . '/params.php'),
-    require(__DIR__ . '/params-local.php')
+    require(__DIR__ . '/params.php')
 );
 
 return [
@@ -17,13 +15,16 @@ return [
         'transfer' => [
             'class' => 'frontend\modules\transfer\Module',
         ],
+        'v1' => [
+            'class' => 'frontend\modules\v1\Module',
+        ],
     ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'frontend\models\User',
             'enableAutoLogin' => true,
         ],
         'session' => [

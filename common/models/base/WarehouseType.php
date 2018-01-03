@@ -31,6 +31,7 @@ class WarehouseType extends Base
     public function rules()
     {
         return [
+            ['id', 'integer'],
             [['createdAt', 'updatedAt', 'deletedAt'], 'safe'],
             [['name'], 'string', 'max' => 255],
         ];
@@ -48,13 +49,5 @@ class WarehouseType extends Base
             'updatedAt' => Yii::t('app', 'Updated At'),
             'deletedAt' => Yii::t('app', 'Delete At'),
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getWarehouses()
-    {
-        return $this->hasMany(Warehouse::className(), ['idType' => 'id']);
     }
 }

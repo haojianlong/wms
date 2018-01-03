@@ -38,6 +38,7 @@ class AR extends Base
     public function rules()
     {
         return [
+            ['id', 'integer'],
             [['idCompany', 'idProduct', 'type', 'quantity'], 'required'],
             [['quantity', 'idUser', 'idCompany', 'idProduct', 'idWarehouse', 'type'], 'integer'],
             [['date', 'createdAt', 'updatedAt', 'deletedAt'], 'safe'],

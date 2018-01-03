@@ -69,6 +69,4 @@ class Role extends \common\models\base\Role
     {
         return $this->hasMany(User::className(), ['idRole' => 'id']);
     }
-
-
 }

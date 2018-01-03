@@ -2,7 +2,8 @@
 
 namespace common\models\base;
 
-use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
 
 /**
  * class base
@@ -11,25 +12,41 @@ use Yii;
  */
 class Base extends \common\libraries\db\ActiveRecord
 {
-    use traits\DbDefault;
+    //use traits\DbDefault;
     use traits\SoftDeleteable;
+
+//    对数据库自动保存操作时间，被TimestampBehavior替代操作
+//    /**
+//     * @inheritdoc
+//     */
+//    public function beforeSave($insert)
+//    {
+//        if (parent::beforeSave($insert)) {
+//            if (method_exists($this, 'setTime')) {
+//                if ($insert) {
+//                    $this->setTime('createdAt');
+//                }
+//                $this->setTime('updatedAt');
+//            }
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
     /**
      * @inheritdoc
      */
-    public function beforeSave($insert)
+    public function behaviors()
     {
-        if (parent::beforeSave($insert)) {
-            if (method_exists($this, 'setTime')) {
-                if ($insert) {
-                    $this->setTime('createdAt');
-                }
-                $this->setTime('updatedAt');
-            }
-            return true;
-        } else {
-            return false;
-        }
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'createdAtAttribute' => 'createdAt',
+                'updatedAtAttribute' => 'updatedAt',
+                'value' => new Expression('NOW()'),
+            ]
+        ];
     }
 
     /**
