@@ -8,10 +8,28 @@
 
 namespace common\libraries\jwt;
 
+use common\libraries\openssl\RSA;
+use Firebase\JWT\JWT as BaseJWT;
 
-class JWT
+final class JWT
 {
-    public static function generate(){
-        return 'ok';
+    public static function generate($user)
+    {
+        $token = [
+            "id" => $user->id,
+            "email" => $user->email,
+            "time" => time()
+        ];
+        return BaseJWT::encode($token, RSA::$privateKey, 'RS256');
+    }
+
+    /**
+     * Parses the JWT and returns a token class
+     * @param string $token JWT
+     * @return object
+     */
+    public static function loadToken($token)
+    {
+        return BaseJWT::decode($token, RSA::$publicKey, array('RS256'));
     }
 }

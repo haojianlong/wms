@@ -43,6 +43,6 @@ class AuthController extends Controller
 
     public function actionIndex()
     {
-        return JWT::generate();
+        return JWT::generate(Yii::$app->user->identity);
     }
 }

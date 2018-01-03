@@ -2,8 +2,8 @@
 
 namespace frontend\models;
 
+use common\libraries\jwt\JWT;
 use Yii;
-use yii\base\NotSupportedException;
 use yii\web\IdentityInterface;
 
 class User extends \common\models\User implements IdentityInterface
@@ -18,7 +18,8 @@ class User extends \common\models\User implements IdentityInterface
 
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        return static::findOne(['auth_key' => $token]);
+        $token = JWT::loadToken($token);
+        return static::findOne($token->id);
     }
 
     /**

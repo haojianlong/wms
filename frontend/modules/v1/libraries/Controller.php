@@ -3,10 +3,6 @@
 namespace frontend\modules\v1\libraries;
 
 use Yii;
-use yii\filters\auth\CompositeAuth;
-use yii\filters\auth\HttpBasicAuth;
-use yii\filters\auth\HttpBearerAuth;
-use yii\filters\auth\QueryParamAuth;
 use yii\filters\ContentNegotiator;
 use yii\filters\RateLimiter;
 use yii\filters\VerbFilter;
@@ -14,19 +10,6 @@ use yii\web\Response;
 
 /**
  * Controller is the base class for RESTful API controller classes.
- *
- * Controller implements the following steps in a RESTful API request handling cycle:
- *
- * 1. Resolving response format (see [[ContentNegotiator]]);
- * 2. Validating request method (see [[verbs()]]).
- * 3. Authenticating user (see [[\yii\filters\auth\AuthInterface]]);
- * 4. Rate limiting (see [[RateLimiter]]);
- * 5. Formatting response data (see [[serializeData()]]).
- *
- * For more details and usage information on Controller, see the [guide article on rest controllers](guide:rest-controllers).
- *
- * @author Qiang Xue <qiang.xue@gmail.com>
- * @since 2.0
  */
 class Controller extends \yii\web\Controller
 {
@@ -56,11 +39,8 @@ class Controller extends \yii\web\Controller
                 'class' => VerbFilter::className(),
                 'actions' => $this->verbs(),
             ],
-            'authenticator' => [
-                'class' => CompositeAuth::className(),
-                'authMethods' => [
-                    HttpBasicAuth::className()
-                ]
+            'bearerAuth' => [
+                'class' => \yii\filters\auth\HttpBearerAuth::className(),
             ],
             'rateLimiter' => [
                 'class' => RateLimiter::className(),
@@ -73,13 +53,11 @@ class Controller extends \yii\web\Controller
      */
     public function afterAction($action, $result)
     {
-        $result = parent::afterAction($action, $result);
-        $data = [
+        return [
             'status' => 200,
             'message' => '',
-            'data' => $this->serializeData($result)
+            'data' => $this->serializeData(parent::afterAction($action, $result))
         ];
-        return $data;
     }
 
     /**
