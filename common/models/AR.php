@@ -14,7 +14,7 @@ use Yii;
  * @property int $idWarehouse
  * @property string $date
  * @property boolean $isTransfer
- * @property string $quantity
+ * @property int $quantity
  * @property string $price
  * @property string $note
  * @property int $type
@@ -51,7 +51,7 @@ class AR extends \common\models\base\AR
         ]);
     }
 
-    public function limitQuantity($attribute, $params)
+    public function limitQuantity($attribute)
     {
         if ($this->type == self::ENTRY) {
             $quantity = $this->quantity + $this->product->quantity;

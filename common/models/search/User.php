@@ -2,10 +2,9 @@
 
 namespace common\models\search;
 
-use Yii;
+use common\models\User as UserModel;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\User as UserModel;
 
 /**
  * User represents the model behind the search form of `common\models\User`.

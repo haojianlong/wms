@@ -2,14 +2,28 @@
 
 namespace common\libraries\services;
 
-use Yii;
+use common\models\AR;
+use yii\db\Exception;
+use yii\helpers\VarDumper;
 use yii\web\BadRequestHttpException;
 use yii\web\ServerErrorHttpException;
-use yii\helpers\VarDumper;
 use yii\widgets\ActiveForm;
 
-class ARServer  extends BaseServer
+/**
+ * Class ARServer
+ *
+ * @property AR $_model
+ *
+ * @package common\libraries\services
+ */
+class ARServer extends BaseServer
 {
+    /**
+     * 调拨记录
+     * @return bool
+     * @throws BadRequestHttpException
+     * @throws ServerErrorHttpException
+     */
     public function operate()
     {
         $model = $this->_model;
@@ -27,21 +41,31 @@ class ARServer  extends BaseServer
         }
 
         $trans = \Yii::$app->db->beginTransaction();
-        try{
+        try {
             if (!$model->save(false) || !$model->product->save()) {
-                throw new \yii\db\Exception(VarDumper::export(array_merge($model->errors,$model->product->errors)));
+                throw new Exception(VarDumper::export(array_merge($model->errors, $model->product->errors)));
             }
             $trans->commit();
-        } catch (\yii\db\Exception $e) {
-                $trans->rollBack();
-                if ($e->errorInfo) {
-                    throw new ServerErrorHttpException($e->errorInfo);
-                } elseif ($e->getMessage()) {
-                    throw new BadRequestHttpException($e->getMessage());
-                }
-                // print_r($e->errorInfo);      //db错误
-                // print_r($e->getMessage());   //yii报错
+        } catch (Exception $e) {
+            $trans->rollBack();
+            if ($e->errorInfo) {
+                throw new ServerErrorHttpException($e->errorInfo);
+            } elseif ($e->getMessage()) {
+                throw new BadRequestHttpException($e->getMessage());
+            }
         }
         return true;
+    }
+
+    /**
+     * @param AR $model
+     * @return null|self
+     */
+    public static function getServer($model)
+    {
+        if (!($model instanceof AR)) {
+            return null;
+        }
+        return new static($model);
     }
 }

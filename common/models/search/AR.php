@@ -2,10 +2,9 @@
 
 namespace common\models\search;
 
-use Yii;
+use common\models\AR as ARModel;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\AR as ARModel;
 
 /**
  * AR represents the model behind the search form of `common\models\AR`.

@@ -2,12 +2,12 @@
 
 namespace common\libraries\services;
 
-use Yii;
+use common\libraries\db\ActiveRecord;
 
 /**
  * @author Jianlong Hao <805449488@qq.com>
  */
-class BaseServer
+abstract class BaseServer
 {
     /**
      * new static()
@@ -16,8 +16,7 @@ class BaseServer
     // private $_server;
 
     /**
-     * \yii\db\ActiveRecord
-     * @var $_model;
+     * @var ActiveRecord $_model ;
      */
     protected $_model;
 
@@ -32,15 +31,11 @@ class BaseServer
     /**
      * @inheritdoc
      */
-    public static function getServer($model){
+    public static function getServer($model)
+    {
         if (!($model instanceof \yii\db\ActiveRecord)) {
             return null;
         }
-
-        // if (self::$_server) {
-        //     return self::$_server;
-        // }
-
         return new static($model);
     }
 

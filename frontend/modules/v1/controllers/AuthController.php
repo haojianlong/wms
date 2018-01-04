@@ -12,6 +12,7 @@ use common\libraries\jwt\JWT;
 use frontend\models\User;
 use Yii;
 use yii\base\Controller;
+use yii\filters\auth\HttpBasicAuth;
 use yii\web\Response;
 
 class AuthController extends Controller
@@ -23,7 +24,7 @@ class AuthController extends Controller
     {
         return [
             'basicAuth' => [
-                'class' => \yii\filters\auth\HttpBasicAuth::className(),
+                'class' => HttpBasicAuth::className(),
                 'auth' => function ($username, $password) {
                     $user = User::findByUsername($username);
                     if ($user->validatePassword($password)) {

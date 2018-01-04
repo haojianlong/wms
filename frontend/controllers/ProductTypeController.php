@@ -110,7 +110,8 @@ class ProductTypeController extends Controller
     /**
      * get [id => name] by idParent.
      * @param integer $idParent
-     * @return mixed
+     * @return string
+     * @throws NotFoundHttpException
      */
     public function actionNames($idParent)
     {

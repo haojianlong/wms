@@ -2,15 +2,30 @@
 
 namespace common\libraries\services;
 
-use Yii;
-use yii\web\BadRequestHttpException;
-use yii\web\ServerErrorHttpException;
-use yii\helpers\VarDumper;
 use common\models\AR;
 use common\models\Product;
+use common\models\Transfer;
+use yii\db\Exception;
+use yii\helpers\VarDumper;
+use yii\web\BadRequestHttpException;
+use yii\web\ServerErrorHttpException;
 
-class TransferServer  extends BaseServer
+/**
+ * Class TransferServer
+ *
+ * @property Transfer $_model
+ *
+ * @package common\libraries\services
+ */
+class TransferServer extends BaseServer
 {
+
+    /**
+     * 调拨操作
+     * @return bool
+     * @throws BadRequestHttpException
+     * @throws ServerErrorHttpException
+     */
     public function operate()
     {
         $data = [
@@ -24,11 +39,11 @@ class TransferServer  extends BaseServer
         ];
 
         $trans = \Yii::$app->db->beginTransaction();
-        try{
+        try {
             $intoProduct = $this->getIntoProduct();
 
             if (!$intoProduct->save()) {
-                throw new \yii\db\Exception(VarDumper::export($intoProduct->errors));
+                throw new Exception(VarDumper::export($intoProduct->errors));
             }
 
             $from = ARServer::getServer(new AR($data));
@@ -38,23 +53,23 @@ class TransferServer  extends BaseServer
             $into = ARServer::getServer(new AR($data));
 
             if (!$into->operate() || !$from->operate()) {
-                throw new \yii\db\Exception('unknown error');
+                throw new Exception('unknown error');
             }
 
             $this->_model->idArOut = $from->_model->id;
             $this->_model->idArInto = $into->_model->id;
             if (!$this->_model->save()) {
-                throw new \yii\db\Exception(VarDumper::export($this->_model->errors));
+                throw new Exception(VarDumper::export($this->_model->errors));
             }
 
             $trans->commit();
-        } catch (\yii\db\Exception $e) {
-                $trans->rollBack();
-                if ($e->errorInfo) {
-                    throw new ServerErrorHttpException($e->errorInfo);
-                } elseif ($e->getMessage()) {
-                    throw new BadRequestHttpException($e->getMessage());
-                }
+        } catch (Exception $e) {
+            $trans->rollBack();
+            if ($e->errorInfo) {
+                throw new ServerErrorHttpException($e->errorInfo);
+            } elseif ($e->getMessage()) {
+                throw new BadRequestHttpException($e->getMessage());
+            }
         }
 
         return true;
@@ -82,5 +97,17 @@ class TransferServer  extends BaseServer
         }
 
         return $intoProduct;
+    }
+
+    /**
+     * @param Transfer $model
+     * @return null|self
+     */
+    public static function getServer($model)
+    {
+        if (!($model instanceof Transfer)) {
+            return null;
+        }
+        return new static($model);
     }
 }

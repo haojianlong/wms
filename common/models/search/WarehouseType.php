@@ -2,10 +2,9 @@
 
 namespace common\models\search;
 
-use Yii;
+use common\models\WarehouseType as WarehouseTypeModel;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\WarehouseType as WarehouseTypeModel;
 
 /**
  * WarehouseType represents the model behind the search form of `common\models\WarehouseType`.

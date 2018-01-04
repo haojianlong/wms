@@ -2,7 +2,6 @@
 
 namespace common\models;
 
-use Yii;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -16,8 +15,8 @@ use yii\helpers\ArrayHelper;
  * @property string $deletedAt
  *
  * @property Product[] $products
- * @array Parent[] $parents
- * @property Parent $parent
+ * @array ProductType[] $parents 所有父类型
+ * @property ProductType $parent 所在父类型
  * @array name[] $names
  */
 class ProductType extends \common\models\base\ProductType
@@ -40,7 +39,8 @@ class ProductType extends \common\models\base\ProductType
     }
 
     /**
-     * @return array $names
+     * @param null $idParent
+     * @return array 获取子类型[id => name]
      */
     public static function getNames($idParent = null)
     {
@@ -57,7 +57,7 @@ class ProductType extends \common\models\base\ProductType
     }
 
     /**
-     * @return \yii\db\ActiveQuery
+     * @return ProductType|array|null
      */
     public function getParent()
     {

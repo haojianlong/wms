@@ -2,10 +2,9 @@
 
 namespace common\models\search;
 
-use Yii;
+use common\models\Location as LocationModel;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Location as LocationModel;
 
 /**
  * Location represents the model behind the search form of `common\models\Location`.
