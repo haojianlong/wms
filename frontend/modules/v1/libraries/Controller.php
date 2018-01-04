@@ -3,6 +3,7 @@
 namespace frontend\modules\v1\libraries;
 
 use Yii;
+use yii\filters\auth\HttpBearerAuth;
 use yii\filters\ContentNegotiator;
 use yii\filters\RateLimiter;
 use yii\filters\VerbFilter;
@@ -40,7 +41,7 @@ class Controller extends \yii\web\Controller
                 'actions' => $this->verbs(),
             ],
             'bearerAuth' => [
-                'class' => \yii\filters\auth\HttpBearerAuth::className(),
+                'class' => HttpBearerAuth::className(),
             ],
             'rateLimiter' => [
                 'class' => RateLimiter::className(),

@@ -1,14 +1,14 @@
 <?php
 
+use common\models\Warehouse;
+use kartik\date\DatePicker;
+use kartik\widgets\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use kartik\widgets\Select2;
-use kartik\date\DatePicker;
-use common\models\Product;
-use common\models\Warehouse;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Transfer */
+/* @var $product common\models\Product */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 

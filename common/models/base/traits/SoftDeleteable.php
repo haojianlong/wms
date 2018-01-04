@@ -2,8 +2,6 @@
 
 namespace common\models\base\traits;
 
-use yii\db\ActiveQuery;
-
 trait SoftDeleteable
 {
     protected $touches = [

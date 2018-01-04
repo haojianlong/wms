@@ -2,6 +2,7 @@
 
 namespace common\models\base;
 
+use common\libraries\db\ActiveQuery;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 

@@ -15,7 +15,7 @@ use Yii;
  * @property string $date
  * @property int $type
  * @property boolean $isTransfer
- * @property string $quantity
+ * @property int $quantity
  * @property string $price
  * @property string $note
  * @property string $createdAt

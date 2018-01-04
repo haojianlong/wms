@@ -2,13 +2,9 @@
 
 namespace frontend\modules\transfer\controllers;
 
-use Yii;
-use common\models\Transfer;
-use common\models\Product;
 use common\models\search\Transfer as TransferSearch;
-use yii\web\NotFoundHttpException;
-use yii\web\BadRequestHttpException;
-use yii\web\Controller;
+use Yii;
+
 /**
  * TransferController implements the CRUD actions for Transfer model.
  */

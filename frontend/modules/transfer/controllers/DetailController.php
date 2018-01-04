@@ -2,14 +2,12 @@
 
 namespace frontend\modules\transfer\controllers;
 
-use Yii;
-use frontend\modules\transfer\models\Transfer;
-use common\models\Product;
-use common\models\search\Transfer as TransferSearch;
 use common\libraries\services\TransferServer;
-use yii\web\NotFoundHttpException;
+use common\models\Product;
+use frontend\modules\transfer\models\Transfer;
+use Yii;
 use yii\web\BadRequestHttpException;
-use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 /**
  * TransferController implements the CRUD actions for Transfer model.
@@ -63,7 +61,6 @@ class DetailController extends BaseController
             $model->idArOut = $this->product->id;
             $server = TransferServer::getServer($model);
             $server->operate();
-            exit();
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
