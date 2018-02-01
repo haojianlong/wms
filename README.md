@@ -3,14 +3,14 @@ WMS
 本人的毕业设计，但是还没做完就毕业了，哈哈哈哈。
 现在作为练手的demo，重点用于学习项目架构与设计思想。
 ------------------
-###主要代码结构
+### 主要代码结构
 ```
 common/                                 公共包
 frontend/                               前台
 frontend/modules/v1/                    api模块
 console/                                命令行
 ```
-####common
+#### common
 ```
 config/                                 通用配置
 config/config(.example).yml             密钥文件及模板
@@ -20,13 +20,13 @@ libraries/openssl/                      opnessl扩展的调用，用于生成密
 libraries/services/                     业务服务器
 models/                                 数据实体    
 ```
-####frontend
+#### frontend
 ```
 config/                                 配置
 models/                                 数据实体，继承自common  
 frontend/modules/transfer/              独立业务模块         
 ```
-####console
+#### console
 ```
 migrations/                             数据库迁移脚本
 demo/                                   关于php多进程扩展的小demo，学习中    
