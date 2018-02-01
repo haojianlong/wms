@@ -2,12 +2,11 @@
 
 namespace frontend\controllers;
 
-use Yii;
+use common\libraries\services\ARServer;
 use common\models\AR;
 use common\models\search\AR as ARSearch;
-use common\libraries\services\ARServer;
+use Yii;
 use yii\web\NotFoundHttpException;
-
 
 /**
  * ARController implements the CRUD actions for AR model.
