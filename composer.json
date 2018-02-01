@@ -4,7 +4,8 @@
     "keywords": ["yii2", "framework", "advanced", "project template"],
     "homepage": "http://www.yiiframework.com/",
     "type": "project",
-    "license": "BSD-3-Clause",
+    "license": "Comercial",
+    "minimum-stability": "stable",
     "support": {
         "issues": "https://github.com/yiisoft/yii2/issues?state=open",
         "forum": "http://www.yiiframework.com/forum/",
@@ -12,14 +13,14 @@
         "irc": "irc://irc.freenode.net/yii",
         "source": "https://github.com/yiisoft/yii2"
     },
-    "minimum-stability": "dev",
     "require": {
         "php": ">=5.6.0",
-        "yiisoft/yii2": "~2.0.6",
-        "yiisoft/yii2-bootstrap": "~2.0.0",
+        "yiisoft/yii2": "~2.0.13",
+        "yiisoft/yii2-bootstrap": "^2.0.6",
         "yiisoft/yii2-swiftmailer": "~2.0.0",
         "kartik-v/yii2-widgets": "*",
-        "firebase/php-jwt": "dev-master"
+        "firebase/php-jwt": "dev-master",
+        "phpunit/php-code-coverage": "4.0.x-dev"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
