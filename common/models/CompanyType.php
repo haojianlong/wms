@@ -16,7 +16,7 @@ namespace common\models;
  */
 class CompanyType extends \common\models\base\CompanyType
 {
-    use base\traits\ArrayName;
+    use base\traits\ArrayNameTrait;
 
     protected $touches = [
     	'companies'

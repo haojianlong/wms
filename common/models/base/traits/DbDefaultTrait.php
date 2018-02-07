@@ -2,7 +2,7 @@
 
 namespace common\models\base\traits;
 
-trait DbDefault
+trait DbDefaultTrait
 {
     /**
      * @return void

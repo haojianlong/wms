@@ -16,7 +16,7 @@ namespace common\models;
  */
 class WarehouseType extends \common\models\base\WarehouseType
 {
-    use base\traits\ArrayName;
+    use base\traits\ArrayNameTrait;
 
     /**
      * @return \yii\db\ActiveQuery

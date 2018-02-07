@@ -4,7 +4,7 @@ namespace common\models\base\traits;
 
 use yii\helpers\ArrayHelper;
 
-trait ArrayName
+trait ArrayNameTrait
 {
     /**
      * @return array $names

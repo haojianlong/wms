@@ -18,7 +18,7 @@ use yii\helpers\Json;
  */
 class Role extends \common\models\base\Role
 {
-	use base\traits\ArrayName;
+	use base\traits\ArrayNameTrait;
 
 	const ROLE = 11;
 	const ROLE_AR = 1;

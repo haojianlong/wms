@@ -27,7 +27,7 @@ namespace common\models;
  */
 class Company extends \common\models\base\Company
 {
-	use base\traits\ArrayName;
+	use base\traits\ArrayNameTrait;
 
     /**
      * @return \yii\db\ActiveQuery

@@ -15,6 +15,7 @@ class Base extends \common\libraries\db\ActiveRecord
 {
     //use traits\DbDefault;
     use traits\SoftDeleteable;
+    use traits\ConstantTrait;
 
 //    对数据库自动保存操作时间，被TimestampBehavior替代操作
 //    /**

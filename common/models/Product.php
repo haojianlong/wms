@@ -23,7 +23,7 @@ namespace common\models;
  */
 class Product extends \common\models\base\Product
 {
-    use base\traits\ArrayName;
+    use base\traits\ArrayNameTrait;
 
     /**
      * @return \yii\db\ActiveQuery

@@ -19,7 +19,7 @@ namespace common\models;
  */
 class Location extends \common\models\base\Location
 {
-    use base\traits\ArrayName;
+    use base\traits\ArrayNameTrait;
 
     const STATUS_CLOSED = 0;
     const STATUS_ACTIVE = 1;

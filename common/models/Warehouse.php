@@ -23,7 +23,7 @@ namespace common\models;
  */
 class Warehouse extends \common\models\base\Warehouse
 {
-    use base\traits\ArrayName;
+    use base\traits\ArrayNameTrait;
 
     const STATUS_CLOSED = 0;
     const STATUS_ACTIVE = 1;
